@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-
+import { Header, Icon } from 'react-native-elements';
 
 export default function Products() {
   const [data, setData] = useState([]);
@@ -25,6 +25,11 @@ export default function Products() {
   }
   return (
     <View style={styles.container}>
+      <Header
+      leftComponent={{icon: 'menu', color:'#fff'}}
+      centerComponent={{text:'BEAUTY APP'}}
+      rightComponent={{icon: 'home', color:'#fff'}}
+        />
       <Text>Open up App.js to start working on your app!</Text>
       <Button onPress={getData} title='SHOW'></Button>
       <StatusBar style="auto" />
