@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
-import { Header, Icon } from 'react-native-elements';
-import { Menu, Divider, Provider } from 'react-native-paper';
-import MyComponent from './MyComponent';
+import Header from '../components/Header.js'
 
-export default function Quiz({ navigation }) {
+export default function ScreenOne () {
     const [skin, setSkin] = useState('');
-    const [visible, setVisible] = React.useState(false);
-    const openMenu = () => setVisible(true);
-    const closeMenu = () => setVisible(false);
 
     useEffect (() => {
         console.log(skin)
     })
-  
+
     const active = (param) => {
         switch(param) {
  
@@ -38,19 +33,26 @@ export default function Quiz({ navigation }) {
           
             }
     }
-  
-    return (<View>
-        <Header
-        leftComponent={<View><Button onPress={() => openMenu()} title='Show menu'><Icon name='menu'></Icon></Button>
-        </View>
-        }
-        centerComponent={{text:'BEAUTY APP'}}
-        rightComponent={{icon: 'home', color:'#fff'}}
-          />
+
+    return (
+        <React.Fragment>
+        <Header />
+        <View style={styles.container}>
         <Button title='Oily' onPress={() => active('Oily')}></Button>
         <Button title='Dry' onPress={() => active('Dry')}></Button>
         <Button title='Normal' onPress={() => active('Normal')}></Button>
         <Button title='Acne' onPress={() => active('Acne')}></Button>
-        <Button title='Open' onPress={() => navigation.navigate('MyComponent')}></Button>
-        </View>);
-}
+        </View>
+      </React.Fragment>
+    );
+  }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+ 
+});

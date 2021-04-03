@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Header, Icon } from 'react-native-elements';
+import { StatusBar } from 'expo-status-bar';
 
-export default function Products() {
+import Header from '../components/Header.js'
+
+export default function ScreenTwo () {
   const [data, setData] = useState([]);
   const [toner, setToner] = useState([]);
  
@@ -23,24 +24,21 @@ export default function Products() {
     };
     
   }
-  return (
-    <View style={styles.container}>
-      <Header
-      leftComponent={{icon: 'menu', color:'#fff'}}
-      centerComponent={{text:'BEAUTY APP'}}
-      rightComponent={{icon: 'home', color:'#fff'}}
-        />
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button onPress={getData} title='SHOW'></Button>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    return (
+      <React.Fragment>
+        <Header />
+        <View style={styles.container}>
+        <Button onPress={getData} title='SHOW'></Button>
+        <StatusBar style="auto" />
+        </View>
+      </React.Fragment>
+    );
+  }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
