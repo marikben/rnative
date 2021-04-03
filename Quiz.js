@@ -4,7 +4,7 @@ import { Header, Icon } from 'react-native-elements';
 import { Menu, Divider, Provider } from 'react-native-paper';
 import MyComponent from './MyComponent';
 
-export default function Quiz() {
+export default function Quiz({ navigation }) {
     const [skin, setSkin] = useState('');
     const [visible, setVisible] = React.useState(false);
     const openMenu = () => setVisible(true);
@@ -51,6 +51,6 @@ export default function Quiz() {
         <Button title='Dry' onPress={() => active('Dry')}></Button>
         <Button title='Normal' onPress={() => active('Normal')}></Button>
         <Button title='Acne' onPress={() => active('Acne')}></Button>
-        <Button title='Open' onPress={() => openMenu()}></Button>
+        <Button title='Open' onPress={() => navigation.navigate('MyComponent')}></Button>
         </View>);
 }
