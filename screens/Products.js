@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import Header from '../components/Header.js'
 
-export default function ScreenTwo () {
+export default function Products () {
   const [data, setData] = useState([]);
   const [toner, setToner] = useState([]);
  
