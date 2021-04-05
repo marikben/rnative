@@ -4,19 +4,17 @@ import { StatusBar } from 'expo-status-bar';
 
 import Header from '../components/Header.js'
 
-export default function Products () {
+export default function Products ({ navigation }) {
   const [data, setData] = useState([]);
-  const [toner, setToner] = useState([]);
- 
+  const tags = navigation.getParam('list'); //route.params substitute for drawer navigation
+  //console.log(tags)
+
   async function getData () {
-    const url = 'http://api.thegoodfaceproject.com/api/website/products?q=cream&page=1&load-all=true';
-    
+    const url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_tags='+tags.selected+'&product_type=foundation';
     try{
       const response = await fetch(url);
       const prod = await response.json();
       setData(prod);
-      setToner(prod.products[0]);
-      console.log(Math.floor(Math.random() * 100));
       console.log(data);
     }
     catch (error) {

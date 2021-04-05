@@ -2,51 +2,27 @@ import React, { useEffect, useState } from 'react';
 import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
 import Header from '../components/Header.js'
 import TagSelector from 'react-native-tag-selector';
-export default function ScreenOne () {
-    const [skin, setSkin] = useState('');
-    const [questions, setQuestions] = useState([{'name': 'Oily', 'id': 'Oily'}, 
-    {'name': 'Dry', 'id': 'Dry'}, {'name': 'Normal', 'id': 'Normal'}])
-    const [selections, setSelections] = useState([]);
-    useEffect (() => {
-        console.log(skin)
-    })
 
-    const active = (param) => {
-        switch(param) {
- 
-            case 'Oily':
-              setSkin('Oily');
-              break;
-            
-            case 'Dry':
-              setSkin('Dry')
-              break;
-       
-            case 'Acne':
-              setSkin('Acne')
-              break;
-       
-            case 'Normal':
-              setSkin('Normal')
-              break;
-       
-            default:
-              setSkin('');
-          
-            }
-    }
+export default function Quiz ({ navigation }){
+    const [skin, setSkin] = useState('');
+    const [questions, setQuestions] = useState([{'name': 'Alcohol free', 'id': 'Alcohol free'}, 
+    {'name': 'Cruelty free', 'id': 'Cruelty free'}, {'name': 'No talc', 'id': 'No talc'},
+    {'name': 'Oil free', 'id': 'Oil free'}, {'name': 'Silicone free', 'id': 'Silicone free'},
+    {'name': 'Vegan', 'id': 'Vegan'}])
+    const [selections, setSelections] = useState([]);
 
     return (
         <React.Fragment>
         <Header />
         <View>
-        <Text>Select your skin type</Text>
+        <Text>Select preferences</Text>
         <View>
 				<TagSelector 
 					maxHeight={70}
 					tags={questions}
 					onChange={(selected) => setSelections({ selected })} />
 			</View>
+      <Button onPress={() => navigation.navigate('Products', {'list':selections})} title="Show products"></Button>
         </View>
       </React.Fragment>
     );
