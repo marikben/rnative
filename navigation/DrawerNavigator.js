@@ -1,8 +1,9 @@
-import React from 'react';
-import {View,Text} from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import Quiz from '../screens/Quiz';
 import Products from '../screens/Products';
+import Face from '../screens/Face';
+import Base from '../screens/Base';
+import Step2 from '../screens/Step2';
 
 const RouteConfigs = {
   Quiz: {
@@ -13,6 +14,21 @@ const RouteConfigs = {
     screen: Products,
   },
 
+  Face: {
+    screen: Face,
+  },
+  
+  Base: {
+    screen: Base,
+  },
+
+  Step2: {
+    screen: Step2,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  }
+
 };
 
 const DrawerNavigatorConfig = {
@@ -20,6 +36,7 @@ const DrawerNavigatorConfig = {
   drawerOpenRoute: 'DrawerOpen', //to enable route params between screens using drawer navigation
 	drawerCloseRoute: 'DrawerClose',
 	drawerToggleRoute: 'DrawerToggle',
+  
   navigationOptions: {
     headerStyle: {
       backgroundColor: '#f4511e',
