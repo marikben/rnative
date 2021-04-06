@@ -25,27 +25,33 @@ export default function Products ({ navigation }) {
     return (
       <React.Fragment>
         <Header />
-        <View>
+        <View style={styles.container}>
         <Button onPress={getData} title='SHOW'></Button>
         <StatusBar style="auto" />
         </View>
-        <View>
+        <View style ={styles.row}>
           <FlatList
             data={data}
             renderItem={({item}) => (
               <ListItem bottomDivider >
                 <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                  <Image source={{uri: item.image_link}} 
+                  <View style={styles.row_cell_timeplace}>
+                  <ListItem.Title>{item.name.length < 25
+                    ? `${item.name}`
+                    : `${item.name.substring(0, 31)}...`}
+                  </ListItem.Title>
+                  <ListItem.Subtitle>{item.brand}</ListItem.Subtitle>
+                  <ListItem.Subtitle>Price: {item.price}</ListItem.Subtitle>
+                  </View>
+                  <View style={styles.row_cell_temp}><Image source={{uri: item.image_link}} 
                     style={{
                     width:60,
-                    height:90,
-                    borderWidth:2,
+                    height:100,
+                    borderWidth:1,
                     borderColor:'grey',
-                    resizeMode:'contain',
-                    margin:8
+                    resizeMode:'contain'
                   }}
-                />
+                /></View> 
                 </ListItem.Content>
               </ListItem>
             )
@@ -63,5 +69,44 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  container2: {
+    marginTop: 14,
+    alignSelf: "stretch",
+  },
+  row: {
+    elevation: 1,
+    borderRadius: 2,
+    flex: 1,
+    flexDirection: "row", // main axis
+    justifyContent: "flex-start", // main axis
+    alignItems: "center", // cross axis
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 18,
+    paddingRight: 16,
+    marginLeft: 14,
+    marginRight: 14,
+    marginTop: 0,
+    marginBottom: 6,
+  },
+  row_cell_timeplace: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  row_cell_temp: {
+    marginTop: -45,
+    paddingLeft: 240,
+    flex: 0,
+  },
+  row_time: {
+    textAlignVertical: "bottom",
+    includeFontPadding: false,
+    flex: 0,
+  },
+  row_place: {
+    textAlignVertical: "top",
+    includeFontPadding: false,
+    flex: 0,
   },
 });
