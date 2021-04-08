@@ -9,6 +9,7 @@ export default function Products ({ navigation }) {
   const tags = navigation.getParam('list'); //route.params substitute for drawer navigation
   console.log(tags)
   console.log(data)
+  
   async function getData () {
     const url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type='+tags;
     try{

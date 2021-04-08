@@ -1,58 +1,83 @@
 import React, { useEffect, useState } from 'react';
 import { Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { ListItem } from 'react-native-elements';
-import Header from '../components/Header.js'
+import { Header, Icon, ListItem } from 'react-native-elements';
+import TagSelector from 'react-native-tag-selector';
 
 export default function Tags ({ navigation }) {
-    const [tags, setTags] = useState([]);
+    const [selections, setSelections] = useState([]);
     const type = navigation.getParam('list');
+    const tags = getTags(type);
     
-    useEffect(()=>{ 
-        setTags({'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'})
-        console.log(tags)
-    });
+    useEffect(() => {
+        getTags(type) 
+    })
 
-    const testi = (param) => {
+    function getTags (param) {
     
     switch(param) {
         case 'foundation':
-          console.log('1');  
+         return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+         {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'No talc', 'id': 'No talc'},
+         {'name': 'Cruelty free', 'id': 'Cruelty free'}, {'name': 'Alcohol free', 'id': 'Alcohol free'},
+         {'name': 'Oil free', 'id': 'Oil free'}, {'name': 'Silicone free', 'id': 'Silicone free'}]
           break;
         case 'mascara':
-          console.log('mo')
+          return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+          {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Ecocert', 'id': 'Ecocert'},
+          {'name': 'Organic', 'id': 'Organic'}]
           break;
         case 'lipstick':
-            console.log('hei')
+            return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'},
+            {'name': 'Organic', 'id': 'Organic'}]
             break;
         case 'lipliner':
-            console.log('hhui')
+            return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'}];
             break;
         case 'eyeshadow':
-            console.log('hei')
+            return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Ecocert', 'id': 'Ecocert'},
+            {'name': 'Organic', 'id': 'Organic'}, {'name': 'No talc', 'id': 'No talc'}]
             break;
         case 'eyeliner':
-            console.log('kok')
+            return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Ecocert', 'id': 'Ecocert'},
+            {'name': 'Organic', 'id': 'Organic'}];
             break;
         case 'bronzer':
-            console.log('yuu')
+            return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Organic', 'id': 'Organic'}]
             break;
         case 'blush':
-            console.log('vvv')
+            return [{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
+            {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'},
+            {'name': 'Organic', 'id': 'Organic'}, {'name': 'No talc', 'id': 'No talc'}]
             break;
         case 'nail_polish':
-            console.log('cv')
+            return([{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'}])
             break;
 
         default:
-          setTags('toimii');
+          console.log('toimii');
       
         }
     }
     
     return(
     <View style={styles.container}>
-        <Text>Testing{type}</Text>
+        <Header 
+        containerStyle={styles.header}
+        leftComponent={{icon: 'arrow-left'}}
+        onPress={() => navigation.navigate('Base')}/>
+        <Text>Select preferences</Text>
+        <View>
+				<TagSelector 
+					maxHeight={70}
+					tags={tags}
+					onChange={(selected) => setSelections({ selected })} />
+			</View>
     </View>)
 }
 
@@ -61,4 +86,9 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-    }})
+    },
+        header: {
+          paddingTop: 40,
+          backgroundColor: 'whitesmoke',
+        }
+    })
