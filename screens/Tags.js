@@ -32,7 +32,7 @@ export default function Tags ({ navigation }) {
             {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'},
             {'name': 'Organic', 'id': 'Organic'}]
             break;
-        case 'lipliner':
+        case 'lip_liner':
             return[{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
             {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'}];
             break;
@@ -69,9 +69,11 @@ export default function Tags ({ navigation }) {
     <View style={styles.container}>
         <Header 
         containerStyle={styles.header}
-        leftComponent={{icon: 'arrow-left'}}
-        onPress={() => navigation.navigate('Base')}/>
-        <Text>Select preferences</Text>
+        leftComponent={<Icon name='keyboard-arrow-left' size={30}
+            onPress={() => navigation.navigate('Base')}
+          />}
+        />
+        <Text>Select preferences for your {type}</Text>
         <View>
 				<TagSelector 
 					maxHeight={70}
