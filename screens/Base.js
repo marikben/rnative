@@ -11,8 +11,6 @@ export default function Quiz ({ navigation }){
     {'name': 'Eyeshadow', 'id': 'eyeshadow'}, {'name': 'Lipliner', 'id': 'lip_liner'}, 
     {'name': 'Lipstick', 'id': 'lipstick'}, {'name': 'Mascara', 'id': 'mascara'},
     {'name': 'Nail polish', 'id': 'nail_polish'}])
-   
-    console.log(skin)
 
     return (
         <React.Fragment>
@@ -31,6 +29,7 @@ export default function Quiz ({ navigation }){
             />
 			</View>
         <Button onPress={() => navigation.navigate('Step2', {'list': skin})} title="Show products"></Button>
+        <Button onPress={() => navigation.navigate('Tags', {'list': skin})} title="Tags"></Button>
         </View>
       </React.Fragment>
     );
