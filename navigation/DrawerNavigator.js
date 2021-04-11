@@ -2,11 +2,16 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import Base from '../screens/Base';
 import Tags from '../screens/Tags';
 import Results from '../screens/Results';
+import Carousel from '../screens/Carousel'
 
 const RouteConfigs = {
   
   Base: {
     screen: Base,
+  },
+
+  Carousel: {
+    screen: Carousel,
   },
 
   Tags: {
