@@ -61,28 +61,31 @@ export default function Tags ({ navigation }) {
             break;
 
         default:
-          console.log('toimii');
+          return(['']);
       
         }
     }
     
     return(
-    <View style={styles.container}>
+        <React.Fragment>
         <Header 
         containerStyle={styles.header}
         leftComponent={<Icon name='keyboard-arrow-left' size={30}
             onPress={() => navigation.navigate('Base')}
           />}
         />
-        <Text>Select preferences for your {name}</Text>
-        <View>
+    <View style={styles.container}>
+       
+        <Text style={{padding: 10, fontSize: 16}}>Select preferences for your {name}</Text>
+        <View style={{padding: 20}}>
 				<TagSelector 
 					maxHeight={70}
 					tags={tags}
 					onChange={(selected) => setSelections({ selected })} />
 			</View>
-            <Button onPress={() => navigation.navigate('Results', {'list':selections, 'type':type})} title="Show products"></Button>
-    </View>)
+            <Button color='#E35D86' onPress={() => navigation.navigate('Results', {'list':selections, 'type':type})} title="Show products"></Button>
+    </View>
+    </React.Fragment>)
 }
 
 const styles = StyleSheet.create({
@@ -90,9 +93,10 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      marginTop: -500
     },
         header: {
-          paddingTop: 40,
+          //paddingTop: 40,
           backgroundColor: 'whitesmoke',
         }
     })

@@ -31,7 +31,7 @@ export default function Results ({ navigation }) {
           />}
         />
         <View style={styles.container}>
-        <Button onPress={getData} title='SHOW'></Button>
+        <Button color='#E35D86' onPress={getData} title='SHOW'></Button>
         <StatusBar style="auto" />
         </View>
         <View style ={styles.row}>
@@ -43,7 +43,7 @@ export default function Results ({ navigation }) {
                   <View style={styles.row_cell_timeplace}>
                   <ListItem.Title>{item.name.length < 25
                     ? `${item.name}`
-                    : `${item.name.substring(0, 31)}...`}
+                    : `${item.name.substring(0, 29)}...`}
                   </ListItem.Title>
                   <ListItem.Subtitle>{item.brand}</ListItem.Subtitle>
                   <ListItem.Subtitle>Price: {item.price}</ListItem.Subtitle>
@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: -200
   },
   container2: {
     marginTop: 14,
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     marginLeft: 14,
     marginRight: 14,
-    marginTop: 0,
+    marginTop: -200,
     marginBottom: 6,
   },
   row_cell_timeplace: {

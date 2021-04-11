@@ -15,20 +15,23 @@ export default function Quiz ({ navigation }){
     return (
         <React.Fragment>
         <Header />
-        <View>
-        <Text>Select preferences</Text>
-        <View>
+        <View style={styles.container}>
+        <Text style={{fontSize: 16}}>Select product category</Text>
+        <View style={styles.box}>
         <FlatList
-            style={{marginTop:40}}
+            style={{marginTop:60}}
             data={questions}
             renderItem={({item})=>(
-            <View style={{justifyContent:'center',marginBottom:10}}>
-            <Button title={item.name} onPress={() => setSkin(item)}></Button>
+            <View style={{justifyContent:'center',marginBottom:10, paddingRight: 5}}>
+            <Button title={item.name} color="#EC88AC" onPress={() => setSkin(item)}></Button>
             </View>
-            )}
+            )} 
+         numColumns={3}
             />
 			</View>
-        <Button onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Tags"></Button>
+      <View style={styles.next}>
+      <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Next"></Button>
+      </View>
         </View>
       </React.Fragment>
     );
@@ -36,11 +39,30 @@ export default function Quiz ({ navigation }){
 
 
 const styles = StyleSheet.create({
+  box: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 30
+   
   },
+  next: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: -700
+  }
+  
+  
   
  
 });
