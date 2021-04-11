@@ -5,6 +5,7 @@ import Face from '../screens/Face';
 import Base from '../screens/Base';
 import Step2 from '../screens/Step2';
 import Tags from '../screens/Tags';
+import Results from '../screens/Results';
 
 const RouteConfigs = {
   Quiz: {
@@ -32,6 +33,13 @@ const RouteConfigs = {
 
   Tags: {
     screen: Tags,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  },
+
+  Results: {
+    screen: Results,
     navigationOptions: {
       drawerLabel: () => null
     }

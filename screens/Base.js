@@ -23,13 +23,12 @@ export default function Quiz ({ navigation }){
             data={questions}
             renderItem={({item})=>(
             <View style={{justifyContent:'center',marginBottom:10}}>
-            <Button title={item.name} onPress={() => setSkin(item.id)}></Button>
+            <Button title={item.name} onPress={() => setSkin(item)}></Button>
             </View>
             )}
             />
 			</View>
-        <Button onPress={() => navigation.navigate('Step2', {'list': skin})} title="Show products"></Button>
-        <Button onPress={() => navigation.navigate('Tags', {'list': skin})} title="Tags"></Button>
+        <Button onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Tags"></Button>
         </View>
       </React.Fragment>
     );

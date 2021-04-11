@@ -7,6 +7,7 @@ import TagSelector from 'react-native-tag-selector';
 export default function Tags ({ navigation }) {
     const [selections, setSelections] = useState([]);
     const type = navigation.getParam('list');
+    const name = navigation.getParam('name');
     const tags = getTags(type);
     
     useEffect(() => {
@@ -73,13 +74,14 @@ export default function Tags ({ navigation }) {
             onPress={() => navigation.navigate('Base')}
           />}
         />
-        <Text>Select preferences for your {type}</Text>
+        <Text>Select preferences for your {name}</Text>
         <View>
 				<TagSelector 
 					maxHeight={70}
 					tags={tags}
 					onChange={(selected) => setSelections({ selected })} />
 			</View>
+            <Button onPress={() => navigation.navigate('Results', {'list':selections, 'type':type})} title="Show products"></Button>
     </View>)
 }
 
