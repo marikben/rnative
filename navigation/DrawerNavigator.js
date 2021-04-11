@@ -1,34 +1,12 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import Quiz from '../screens/Quiz';
-import Products from '../screens/Products';
-import Face from '../screens/Face';
 import Base from '../screens/Base';
-import Step2 from '../screens/Step2';
 import Tags from '../screens/Tags';
 import Results from '../screens/Results';
 
 const RouteConfigs = {
-  Quiz: {
-    screen: Quiz,
-  },
-
-  Products: {
-    screen: Products,
-  },
-
-  Face: {
-    screen: Face,
-  },
   
   Base: {
     screen: Base,
-  },
-
-  Step2: {
-    screen: Step2,
-    navigationOptions: {
-      drawerLabel: () => null
-    }
   },
 
   Tags: {
