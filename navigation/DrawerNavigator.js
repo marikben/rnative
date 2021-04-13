@@ -10,11 +10,17 @@ import Dashboard from '../screens/Dashboard';
 const RouteConfigs = {
 
   Signup: {
-    screen: Signup
+    screen: Signup,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
   },
 
   Login: {
-    screen: Login
+    screen: Login,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
   },
 
   Dashboard: {
