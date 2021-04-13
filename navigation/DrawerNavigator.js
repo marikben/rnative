@@ -3,8 +3,23 @@ import Base from '../screens/Base';
 import Tags from '../screens/Tags';
 import Results from '../screens/Results';
 import Carousel from '../screens/Carousel'
+import Signup from '../screens/Signup';
+import Login from '../screens/Login';
+import Dashboard from '../screens/Dashboard';
 
 const RouteConfigs = {
+
+  Signup: {
+    screen: Signup
+  },
+
+  Login: {
+    screen: Login
+  },
+
+  Dashboard: {
+    screen: Dashboard
+  },
   
   Base: {
     screen: Base,
