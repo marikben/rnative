@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import { Header, Icon, ListItem } from 'react-native-elements';
 import TagSelector from 'react-native-tag-selector';
 

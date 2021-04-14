@@ -12,14 +12,14 @@ import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import Header from '../components/Header.js'
 
-const displayName = firebase.auth().currentUser.displayName;
+//const displayName = firebase.auth().currentUser.displayName;
 const eventslist = [
   {
     src:
       'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
     title: 'Welcome',
     description: <Text>
-    Hello, {displayName}! {'\n'}
+    Hello, ! {'\n'}
     Swipe left to learn more about how to use this app.
   </Text>
   },

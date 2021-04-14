@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
+import{ Button, FlatList, View, Text, StyleSheet, Alert} from 'react-native';
 import Header from '../components/Header.js'
 import TagSelector from 'react-native-tag-selector';
 
