@@ -1,4 +1,5 @@
 import * as React from 'react';
+import firebase from '../database/firebaseDB';
 import {
     Dimensions, 
   View,
@@ -11,12 +12,16 @@ import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import Header from '../components/Header.js'
 
+const displayName = firebase.auth().currentUser.displayName;
 const eventslist = [
   {
     src:
       'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
-    title: 'Breakfast',
-    description: 'Byy'
+    title: 'Welcome',
+    description: <Text>
+    Hello, {displayName}! {'\n'}
+    Swipe left to learn more about how to use this app.
+  </Text>
   },
   {
     src:
@@ -100,12 +105,13 @@ const styles = {
     overflow: 'hidden',
     elevation: 5,
     //margin: 5,
-    width: Dimensions.get('window').width*0.9,
+    width: Dimensions.get('window').width*0.965,
   },
   imageBackgroundStyle: {
-    width: Dimensions.get('window').width*0.85,
+    width: Dimensions.get('window').width*0.925,
     height: 160,
-    marginLeft: 10,
+    marginLeft: 7,
+    marginTop: 7,
     justifyContent: 'center',
   },
   titleView: {
@@ -119,3 +125,4 @@ const styles = {
     marginVertical: 10,
   },
 };
+

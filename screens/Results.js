@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { Button, FlatList, Image,  StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Header, Icon, ListItem } from 'react-native-elements';
 
@@ -30,6 +30,7 @@ export default function Results ({ navigation }) {
             onPress={() => navigation.navigate('Tags')}
           />}
         />
+        <StatusBar hidden />
         <View style={styles.container}>
         <Button color='#E35D86' onPress={getData} title='SHOW'></Button>
         <StatusBar style="auto" />

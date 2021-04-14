@@ -24,7 +24,10 @@ const RouteConfigs = {
   },
 
   Dashboard: {
-    screen: Dashboard
+    screen: Dashboard,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
   },
   
   Base: {
