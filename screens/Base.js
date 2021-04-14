@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import{ Button, FlatList, View, Text, StyleSheet, Alert} from 'react-native';
+import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
 import Header from '../components/Header.js'
 import TagSelector from 'react-native-tag-selector';
 
@@ -14,6 +14,7 @@ export default function Quiz ({ navigation }){
 
     return (
         <React.Fragment>
+        <StatusBar hidden={true} />
         <Header />
         <View style={styles.container}>
         <Text style={{fontSize: 16}}>Select product category</Text>

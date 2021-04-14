@@ -14,13 +14,13 @@ import Header from '../components/Header.js'
 
 //A way approved in the Firebase documentation to get user details 
 //(firebase.auth().currentUser.displayName would crash)
-
 var user = firebase.auth().currentUser;
 var name;
 
 if (user != null) {
   name = user.displayName;
 }
+
 const eventslist = [
   
   { 
