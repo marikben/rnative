@@ -1,13 +1,6 @@
 import * as React from 'react';
 import firebase from '../database/firebaseDB';
-import {
-    Dimensions, 
-  View,
-  ImageBackground,
-  FlatList,
-  Text,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {Dimensions, View, ImageBackground, FlatList, Text, TouchableWithoutFeedback, StatusBar} from 'react-native';
 import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import Header from '../components/Header.js'
@@ -95,6 +88,7 @@ export default class Carousel extends React.Component {
     return (
      <View style={styles.mainContainer}>
     <Header />
+    <StatusBar hidden={true} />
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -136,4 +130,3 @@ const styles = {
     marginVertical: 10,
   },
 };
-
