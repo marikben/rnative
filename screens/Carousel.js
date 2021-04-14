@@ -12,14 +12,23 @@ import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import Header from '../components/Header.js'
 
-//const displayName = firebase.auth().currentUser.displayName;
+//A way approved in the Firebase documentation to get user details 
+//(firebase.auth().currentUser.displayName would crash)
+
+var user = firebase.auth().currentUser;
+var name;
+
+if (user != null) {
+  name = user.displayName;
+}
 const eventslist = [
-  {
+  
+  { 
     src:
       'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
     title: 'Welcome',
     description: <Text>
-    Hello, ! {'\n'}
+    Hello, {name}! {'\n'}
     Swipe left to learn more about how to use this app.
   </Text>
   },
@@ -55,6 +64,7 @@ export default class Carousel extends React.Component {
 
     this.state = {
       data: '',
+      displayName: '',
     };
   }
 
@@ -81,6 +91,7 @@ export default class Carousel extends React.Component {
   );
 
   render() {
+    
     return (
      <View style={styles.mainContainer}>
     <Header />
