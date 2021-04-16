@@ -78,7 +78,8 @@ export default function Tags ({ navigation }) {
         <Text style={{padding: 10, fontSize: 16}}>Select preferences for your {name}</Text>
         <View style={{padding: 20}}>
 				<TagSelector 
-					maxHeight={70}
+					itemLabelStyle={{color:'red'}}
+                    itemStyleSelected={{color:'#FFFFFF'}}
 					tags={tags}
 					onChange={(selected) => setSelections({ selected })} />
 			</View>
