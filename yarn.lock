@@ -8326,6 +8326,13 @@
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz"
   "version" "0.3.1"
 
+"react-native-tag-select@^2.0.0":
+  "integrity" "sha512-ys0A2MKZ8CLQ6QYBnnuyg1/MIsNVmRSSJpPFD3E+tTR4FTaLYNRiTIaBy1Wy77feBaYeDfN7UG2K5jr31+Iq0A=="
+  "resolved" "https://registry.npmjs.org/react-native-tag-select/-/react-native-tag-select-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "prop-types" "^15.6.0"
+
 "react-native-tag-selector@^0.0.3":
   "integrity" "sha512-M/bq9q3KxAMhGZk5SQ8gOB1DWJYCNymVLQvOvM7BUQJLIDa4cRs88stJFOWMmEqFhjTjuTt5yIIy8/rAbxmvFQ=="
   "resolved" "https://registry.npmjs.org/react-native-tag-selector/-/react-native-tag-selector-0.0.3.tgz"
