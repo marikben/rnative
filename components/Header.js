@@ -13,11 +13,11 @@ import {
 
 const YourComponent = () => (
   <View>
-    <Menu>
-      <MenuTrigger text='Select action' />
-      <MenuOptions>
-        <MenuOption text='Save' />
-        <MenuOption text='Moi' />
+    <Menu style={{ height: 50 }} rendererProps={{ anchorStyle: styles.anchorStyle }}>
+      <MenuTrigger customStyles={triggerStyles}><Icon name='user' size={25} color='grey'/></ MenuTrigger>
+      <MenuOptions customStyles={optionsStyles} >
+        <MenuOption text='Save' customStyles={optionStyles} />
+        <MenuOption text='Moi' customStyles={optionStyles}/>
       </MenuOptions>
     </Menu>
   </View>
@@ -30,14 +30,102 @@ export default function () {
         leftComponent={<DrawerTrigger />}
         centerComponent={{text:'BEAUTY APP'}}
         rightComponent={
-          <MenuProvider><YourComponent /></MenuProvider>}
+          <MenuProvider customStyles={menuProviderStyles}><YourComponent /></MenuProvider>}
       />
     )
   }
+  const triggerStyles = {
+    triggerText: {
+      color: 'white',
+    },
+    triggerOuterWrapper: {
+      backgroundColor: 'orange',
+      padding: 5,
+      flex: 1,
+    },
+    triggerWrapper: {
+      backgroundColor: 'blue',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flex: 1,
+    },
+    triggerTouchable: {
+      underlayColor: 'darkblue',
+      activeOpacity: 70,
+      style : {
+        flex: 1,
+      },
+    },
+  };
+
+  const optionsStyles = {
+    optionsContainer: {
+      backgroundColor: 'green',
+      padding: 5,
+      width: 200
+    },
+    optionsWrapper: {
+      backgroundColor: 'purple',
+      height: 200
+    },
+    optionWrapper: {
+      backgroundColor: 'yellow',
+      margin: 5,
+      width: 200
+    },
+    optionTouchable: {
+      underlayColor: 'gold',
+      activeOpacity: 70,
+    },
+    optionText: {
+      color: 'brown',
+    },
+  };
+  
+  const optionStyles = {
+    optionTouchable: {
+      underlayColor: 'red',
+      activeOpacity: 40,
+    },
+    optionWrapper: {
+      backgroundColor: 'pink',
+      margin: 5,
+      height: 500
+    },
+    optionText: {
+      color: 'black',
+    },
+  };
 
 const styles = StyleSheet.create({
   header: {
     //paddingTop: 40,
     backgroundColor: 'whitesmoke',
-  }
+  },
+  menu: {
+    backgroundColor: 'red'
+  },
+  option: {
+    width: 100,
+    height: 20
+  },
+  container: {
+    flexDirection: 'column',
+    padding: 3,
+    //width: 150,
+    height: 150
+  },
+  backdrop: {
+    backgroundColor: 'red',
+    opacity: 0.5,
+  },
+  anchorStyle: {
+    backgroundColor: 'blue',
+  },
 });
+
+const menuProviderStyles = {
+  menuProviderWrapper: styles.container,
+  backdrop: styles.backdrop,
+};
+
