@@ -31,7 +31,8 @@ export default function Quiz ({ navigation }){
             />
 			</View>
       <View style={styles.next}>
-      <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Next"></Button>
+      <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Next">
+      </Button>
       </View>
         </View>
       </React.Fragment>

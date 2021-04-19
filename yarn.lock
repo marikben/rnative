@@ -8204,6 +8204,11 @@
     "prop-types" "^15.5.8"
     "tween-functions" "^1.0.1"
 
+"react-native-dropdown@^0.0.6":
+  "integrity" "sha1-9LiZtAgsSCM0DHN3++c7wBOZFI0="
+  "resolved" "https://registry.npmjs.org/react-native-dropdown/-/react-native-dropdown-0.0.6.tgz"
+  "version" "0.0.6"
+
 "react-native-easy-grid@0.2.2":
   "integrity" "sha512-MlYrNIldnEMKn6TVatQN1P64GoVlwGIuz+8ncdfJ0Wq/xtzUkQwlil8Uksyp7MhKfENE09MQnGNcba6Mx3oSAA=="
   "resolved" "https://registry.npmjs.org/react-native-easy-grid/-/react-native-easy-grid-0.2.2.tgz"
@@ -8288,6 +8293,11 @@
   "version" "0.12.0"
   dependencies:
     "prop-types" "^15.5.9"
+
+"react-native-popup-menu@^0.15.10":
+  "integrity" "sha512-w7MaicsfpclK7g/omjMchNaXwhMi0apt/DC734AbHuJTWCfv5mF3JgL1UzRW19ncFMBRfQeYapPy/zUyJCGgEQ=="
+  "resolved" "https://registry.npmjs.org/react-native-popup-menu/-/react-native-popup-menu-0.15.10.tgz"
+  "version" "0.15.10"
 
 "react-native-ratings@^7.3.0":
   "integrity" "sha512-V3y19iIifwemMr87KfovFIIzy/Rotqcds9k+ECaayQvrlucm/mXFC69R8xl/NivEdnxX7K87iurigByhpE37EQ=="
