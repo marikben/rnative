@@ -4,24 +4,10 @@ import { Header } from 'react-native-elements';
 import DrawerTrigger from './DrawerTrigger'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { MenuProvider } from 'react-native-popup-menu';
-import {
-  Menu,
-  MenuOptions,
-  MenuOption,
-  MenuTrigger,
-} from 'react-native-popup-menu';
 
-const YourComponent = () => (
-  <View>
-    <Menu style={{ height: 50 }} rendererProps={{ anchorStyle: styles.anchorStyle }}>
-      <MenuTrigger customStyles={triggerStyles}><Icon name='user' size={25} color='grey'/></ MenuTrigger>
-      <MenuOptions customStyles={optionsStyles} >
-        <MenuOption text='Save' customStyles={optionStyles} />
-        <MenuOption text='Moi' customStyles={optionStyles}/>
-      </MenuOptions>
-    </Menu>
-  </View>
-);
+import UserMenu from './UserMenu';
+
+
 export default function () {
   
     return (
@@ -30,7 +16,7 @@ export default function () {
         leftComponent={<DrawerTrigger />}
         centerComponent={{text:'BEAUTY APP'}}
         rightComponent={
-          <MenuProvider customStyles={menuProviderStyles}><YourComponent /></MenuProvider>}
+          <UserMenu />}
       />
     )
   }
