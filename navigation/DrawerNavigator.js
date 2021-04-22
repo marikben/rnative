@@ -6,6 +6,7 @@ import Carousel from '../screens/Carousel'
 import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
+//import UserMenu from '../components/UserMenu';
 
 const RouteConfigs = {
 
@@ -29,6 +30,13 @@ const RouteConfigs = {
       drawerLabel: () => null
     }
   },
+
+ // UserMenu: {
+  //  screen: UserMenu,
+  //  navigationOptions: {
+  //    drawerLabel: () => null
+  //  }
+ // },
   
   Base: {
     screen: Base,
