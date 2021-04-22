@@ -48,9 +48,9 @@ const RouteConfigs = {
   },
   Profile: {
     screen: Profile,
-    navigationOptions: {
-      drawerLabel: () => null
-    }
+    //navigationOptions: {
+    //  drawerLabel: () => null
+    //}
   },
 
   Tags: {
