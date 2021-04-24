@@ -42,7 +42,9 @@ export default function Profile ({ navigation }) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World! {mod.name}</Text>
+            <Text style={styles.modalText}>Hello World! </Text>
+            <Text>{mod.name}</Text>
+            <Text>{mod.price}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
