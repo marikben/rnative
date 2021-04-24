@@ -7,6 +7,7 @@ export default function Profile ({ navigation }) {
   const tags = navigation.getParam('list'); //route.params substitute for drawer navigation
   const type = navigation.getParam('type');
   const [modalVisible, setModalVisible] = useState(false);
+  const [mod, setMod] = useState('');
   //console.log(tags)
 
   async function getData () {
@@ -15,12 +16,18 @@ export default function Profile ({ navigation }) {
       const response = await fetch(url);
       const prod = await response.json();
       setData(prod);
-      console.log(data);
+      //console.log(data);
     }
     catch (error) {
     setData('Error', error);
     };
     
+  }
+  const module = (props) => {
+    setMod(props)
+    setModalVisible(true);
+    console.log(mod.name)
+
   }
     return (
       <React.Fragment>
@@ -35,7 +42,7 @@ export default function Profile ({ navigation }) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text style={styles.modalText}>Hello World! {mod.name}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
@@ -60,9 +67,8 @@ export default function Profile ({ navigation }) {
             data={data}
             renderItem={({item}) => (
               <TouchableWithoutFeedback>
-                <Pressable onPress={() => setModalVisible(true)}>
+                <Pressable onPress={() => module(item)}>
               <ListItem bottomDivider >
-                 
                 <ListItem.Content>
                   <View style={styles.row_cell_timeplace}>
                   
@@ -83,7 +89,6 @@ export default function Profile ({ navigation }) {
                   }}
                 /></View> 
                 </ListItem.Content>
-                
               </ListItem>
               </Pressable>
               </TouchableWithoutFeedback>
