@@ -60,11 +60,9 @@ export default function Profile ({ navigation }) {
             data={data}
             renderItem={({item}) => (
               <TouchableWithoutFeedback>
+                <Pressable onPress={() => setModalVisible(true)}>
               <ListItem bottomDivider >
-                 <Pressable
-        
-        onPress={() => setModalVisible(true)}
-      >
+                 
                 <ListItem.Content>
                   <View style={styles.row_cell_timeplace}>
                   
@@ -85,8 +83,9 @@ export default function Profile ({ navigation }) {
                   }}
                 /></View> 
                 </ListItem.Content>
-                </Pressable>
+                
               </ListItem>
+              </Pressable>
               </TouchableWithoutFeedback>
             )
           }
