@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, Image,  StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { Header, Icon, ListItem } from 'react-native-elements';
 
 export default function Results ({ navigation }) {
   const [data, setData] = useState([]);
   const tags = navigation.getParam('list'); //route.params substitute for drawer navigation
   const type = navigation.getParam('type');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mod, setMod] = useState('');
   //console.log(tags)
+
 
   async function getData () {
     const url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_tags='+tags.selected+'&product_type='+type;
@@ -21,8 +24,45 @@ export default function Results ({ navigation }) {
     };
     
   }
+  const module = (props) => {
+    setMod(props)
+    setModalVisible(true);
+    console.log(mod.name)
+
+  }
     return (
       <React.Fragment>
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>{mod.name}</Text>
+            <View style={styles.modal}>
+           <Image
+           style={{ width: 200, height: 200, resizeMode: 'stretch' }}
+        source={{
+          uri: mod.image_link
+        }}
+      /></View>
+            <Text>Brand: {mod.brand}</Text>
+            <Text>Price: {mod.price} $USD</Text>
+            <Pressable
+              style={[styles.buttonClose, styles.button]}
+              onPress={() => setModalVisible(!modalVisible)}
+              
+            >
+              <Text style={{color: 'white'}}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
         <Header 
         containerStyle={styles.header}
         leftComponent={<Icon name='keyboard-arrow-left' size={30}
@@ -32,13 +72,17 @@ export default function Results ({ navigation }) {
         <View style={styles.container}>
         <Button color='#E35D86' onPress={getData} title='SHOW'></Button>
         </View>
+      
         <View style ={styles.row}>
           <FlatList
             data={data}
             renderItem={({item}) => (
+              <TouchableWithoutFeedback>
+                <Pressable onPress={() => module(item)}>
               <ListItem bottomDivider >
                 <ListItem.Content>
                   <View style={styles.row_cell_timeplace}>
+                  
                   <ListItem.Title>{item.name.length < 25
                     ? `${item.name}`
                     : `${item.name.substring(0, 29)}...`}
@@ -57,6 +101,8 @@ export default function Results ({ navigation }) {
                 /></View> 
                 </ListItem.Content>
               </ListItem>
+              </Pressable>
+              </TouchableWithoutFeedback>
             )
           }
           keyExtractor={(item, index) => index.toString()}
@@ -116,5 +162,45 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 40,
     backgroundColor: 'whitesmoke',
-  }
+  },
+  button: 
+    {backgroundColor: "#E35D86", padding: 10, marginTop: 6, borderRadius: 5}
+    
+  ,
+  buttonOpen: {
+    backgroundColor: "#E35D86",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 20
+  },
+  modal: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    paddingBottom : 100,
+    paddingTop : 100,
+    borderWidth : 1,
+    borderColor : 'grey',
+  },
 });
