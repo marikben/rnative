@@ -53,11 +53,11 @@ export default function Profile ({ navigation }) {
             <Text>Brand: {mod.brand}</Text>
             <Text>Price: {mod.price} $USD</Text>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.buttonClose, styles.button]}
               onPress={() => setModalVisible(!modalVisible)}
               
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={{color: 'white'}}>Hide Modal</Text>
             </Pressable>
           </View>
         </View>
@@ -162,12 +162,10 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     backgroundColor: 'whitesmoke',
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    backgroundColor: '#E35D86'
-  },
+  button: 
+    {backgroundColor: "#E35D86", padding: 10, marginTop: 6, borderRadius: 5}
+    
+  ,
   buttonOpen: {
     backgroundColor: "#E35D86",
   },
