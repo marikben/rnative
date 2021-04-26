@@ -42,12 +42,20 @@ export default function Profile ({ navigation }) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World! </Text>
-            <Text>{mod.name}</Text>
-            <Text>{mod.price}</Text>
+            <Text style={styles.modalText}>{mod.name}</Text>
+            <View style={styles.modal}>
+           <Image
+           style={{ width: 200, height: 200, resizeMode: 'stretch' }}
+        source={{
+          uri: mod.image_link
+        }}
+      /></View>
+            <Text>Brand: {mod.brand}</Text>
+            <Text>Price: {mod.price} $USD</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
+              
             >
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
@@ -157,10 +165,11 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    backgroundColor: '#E35D86'
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: "#E35D86",
   },
   buttonClose: {
     backgroundColor: "#2196F3",
@@ -182,6 +191,17 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
-  }
+    textAlign: "center",
+    fontSize: 20
+  },
+  modal: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    paddingBottom : 100,
+    paddingTop : 100,
+    borderWidth : 1,
+    borderColor : 'grey',
+  },
 });
