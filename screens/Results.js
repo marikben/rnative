@@ -10,6 +10,8 @@ export default function Results ({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [mod, setMod] = useState('');
   const [items, setItems] = useState([]);
+  const user = firebase.auth().currentUser;
+  console.log(user.uid)
   //console.log(tags)
 
 
@@ -33,7 +35,7 @@ export default function Results ({ navigation }) {
   }
   const saveItem = () => {
     console.log(mod)
-    firebase.database().ref('items/').push(
+    firebase.database().ref(user.uid+'/').push(
       {'nro': mod.id, 'name': mod.name, 'brand': mod.brand, 'price': mod.price, 'picture': mod.image_link}
     );
     console.log('success')

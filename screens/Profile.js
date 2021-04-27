@@ -6,8 +6,10 @@ import Header from '../components/Header.js'
 
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
+    const user = firebase.auth().currentUser;
+    console.log(user.uid)
     useEffect(() => {
-        firebase.database().ref('items/').on('value', snapshot => {
+        firebase.database().ref(user.uid+'/').on('value', snapshot => {
           const data = snapshot.val();
           const prods = Object.values(data);
           setItems(prods);
