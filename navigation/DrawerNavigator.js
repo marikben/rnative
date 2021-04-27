@@ -6,8 +6,9 @@ import Carousel from '../screens/Carousel'
 import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
-
-//import UserMenu from '../components/UserMenu';
+import UserMenu from '../components/UserMenu';
+import Header from '../components/Header';
+import Profile from '../screens/Profile';
 
 const RouteConfigs = {
 
@@ -20,25 +21,26 @@ const RouteConfigs = {
 
   Login: {
     screen: Login,
+    
     navigationOptions: {
-      drawerLabel: () => null
+      drawerLabel: () => null,
     }
+  },
+
+  Profile: {
+    screen: Profile,
+    //navigationOptions: {
+     // drawerLabel: () => null
+    //}
   },
 
   Dashboard: {
     screen: Dashboard,
-    navigationOptions: {
-      drawerLabel: () => null
-    }
+    //navigationOptions: {
+     // drawerLabel: () => null
+    //}
   },
 
- // UserMenu: {
-  //  screen: UserMenu,
-  //  navigationOptions: {
-  //    drawerLabel: () => null
-  //  }
- // },
-  
   Base: {
     screen: Base,
   },
@@ -60,7 +62,20 @@ const RouteConfigs = {
     navigationOptions: {
       drawerLabel: () => null
     }
-  }
+  },
+  UserMenu: {
+    screen: UserMenu,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  },
+  Header: {
+    screen: Header,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  },
+ 
 
 };
 

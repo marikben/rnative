@@ -1,9 +1,7 @@
-// components/dashboard.js
-
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Alert, TouchableOpacity } from 'react-native';
 import firebase from '../database/firebaseDB';
-import Header from '../components/Header';
+
 
 export default class Dashboard extends Component {
   constructor() {
@@ -13,12 +11,6 @@ export default class Dashboard extends Component {
     }
   }
 
-  signOut = () => {
-    firebase.auth().signOut().then(() => {
-      this.props.navigation.navigate('Login')
-    })
-    .catch(error => this.setState({ errorMessage: error.message }))
-  }  
 
   render() {
     this.state = { 
@@ -26,17 +18,8 @@ export default class Dashboard extends Component {
       uid: firebase.auth().currentUser.uid
     }    
     return (
-      <View style={styles.container}>
-          <Header />
-        <Text style = {styles.textStyle}>
-          Hello, {this.state.displayName}
-        </Text>
-
-        <Button
-          color="#3740FE"
-          title="Logout"
-          onPress={() => this.signOut()}
-        />
+      <View>
+          <Text>Logout</Text>
       </View>
     );
   }

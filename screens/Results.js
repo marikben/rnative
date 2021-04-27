@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { Header, Icon, ListItem } from 'react-native-elements';
+import firebase from '../database/firebaseDB';
 
 export default function Results ({ navigation }) {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ export default function Results ({ navigation }) {
   const type = navigation.getParam('type');
   const [modalVisible, setModalVisible] = useState(false);
   const [mod, setMod] = useState('');
+  const [items, setItems] = useState([]);
   //console.log(tags)
 
 
@@ -27,8 +29,11 @@ export default function Results ({ navigation }) {
   const module = (props) => {
     setMod(props)
     setModalVisible(true);
+    console.log(mod.product_type)
+  }
+  const saveItem = () => {
     console.log(mod.name)
-
+    setModalVisible(!modalVisible)
   }
     return (
       <React.Fragment>
@@ -59,6 +64,13 @@ export default function Results ({ navigation }) {
               
             >
               <Text style={{color: 'white'}}>Hide Modal</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.buttonClose, styles.button]}
+              onPress={() => saveItem()}
+              
+            >
+              <Text style={{color: 'white'}}>Add Item</Text>
             </Pressable>
           </View>
         </View>

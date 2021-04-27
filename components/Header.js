@@ -8,7 +8,7 @@ import { MenuProvider } from 'react-native-popup-menu';
 import UserMenu from './UserMenu';
 
 
-export default function () {
+export default function ({navigation}) {
   
     return (
         <Header 
@@ -114,4 +114,3 @@ const menuProviderStyles = {
   menuProviderWrapper: styles.container,
   backdrop: styles.backdrop,
 };
-
