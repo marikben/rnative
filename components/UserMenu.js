@@ -55,7 +55,7 @@ class UserMenu extends React.Component {
         <Menu
           ref={this.setMenuRef}
           button={<Text onPress={this.showMenu}><Icon name='user' color='grey' size={25}/></Text>}>
-          <MenuItem onPress={this.hideMenu}></MenuItem>
+          <MenuItem onPress={this.hideMenu} disabled>Signed in as <Text style={{color:'#E35D86'}}>{this.state.displayName}</Text></MenuItem>
           <MenuItem onPress={() => signOut()}>Logout<Icon name='logout' /></MenuItem>
           <MenuDivider />
           <MenuItem onPress={this.hideMenu}>Close menu</MenuItem>

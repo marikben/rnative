@@ -50,7 +50,7 @@ export default class Carousel extends Component {
           'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
         title: 'Welcome',
         description: <Text>
-        Hello, {this.state.displayName}! {'\n'}
+        Hello, <Text style={{color:'#E35D86'}}>{this.state.displayName}</Text>! {'\n'}
         Swipe left to learn more about how to use this app.
       </Text>
       },
