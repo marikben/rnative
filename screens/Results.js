@@ -32,7 +32,11 @@ export default function Results ({ navigation }) {
     console.log(mod.product_type)
   }
   const saveItem = () => {
-    console.log(mod.name)
+    console.log(mod)
+    firebase.database().ref('items/').push(
+      {'nro': mod.id, 'name': mod.name, 'brand': mod.brand, 'price': mod.price, 'picture': mod.image_link}
+    );
+    console.log('success')
     setModalVisible(!modalVisible)
   }
     return (
