@@ -31,7 +31,7 @@ export default function Results ({ navigation }) {
   const module = (props) => {
     setMod(props)
     setModalVisible(true);
-    console.log(mod.product_type)
+    console.log(mod)
   }
   const saveItem = () => {
     console.log(mod)
