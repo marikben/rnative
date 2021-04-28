@@ -4,6 +4,8 @@ import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import Header from '../components/Header.js'
 import { DrawerItems } from 'react-navigation-drawer';
+import Favourites from '../components/Favourites';
+import UserDetails from '../components/UserDetails';
 
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
@@ -60,23 +62,22 @@ export default function Profile ({ navigation }) {
         );
       };
      
-    const prof = () => {
-      return(<View><Text>Böö</Text></View>)
-    }
     const prof2 = () => {
       return(<View><Text>Böö</Text></View>)
     }
     const showScreen = (props) => {
-      if(props=='prof'){
-        return(prof())
-      }else {
+      if(props=='user'){
+        return(<Favourites/>)
+      }else if (props=='faves') {
+        return(<UserDetails/>)
+      }else{
         return(<View><Text>Byy</Text></View>)
       }
     }
     return(<View style={styles.container}>
       <Header />
-      <View style={styles.row} ><Button title='user' onPress={() => setVisible('prof')}></Button>
-      <Button title='faves' onPress={() => setVisible('byy')}></Button>
+      <View style={styles.row} ><Button title='user' onPress={() => setVisible('user')}></Button>
+      <Button title='faves' onPress={() => setVisible('faves')}></Button>
       <Button title='settings'></Button></View>
       <View style={styles.row} ><View>{showScreen(visible)}</View></View>
       <View style ={styles.row}>
