@@ -8,6 +8,7 @@ import { DrawerItems } from 'react-navigation-drawer';
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
     const [items2, setItems2] = useState({});
+    const [visible, setVisible] = useState('');
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
     const db = firebase.database().ref(user.uid+'/');
@@ -59,9 +60,25 @@ export default function Profile ({ navigation }) {
         );
       };
      
-
+    const prof = () => {
+      return(<View><Text>Böö</Text></View>)
+    }
+    const prof2 = () => {
+      return(<View><Text>Böö</Text></View>)
+    }
+    const showScreen = (props) => {
+      if(props=='prof'){
+        return(prof())
+      }else {
+        return(<View><Text>Byy</Text></View>)
+      }
+    }
     return(<View style={styles.container}>
       <Header />
+      <View style={styles.row} ><Button title='user' onPress={() => setVisible('prof')}></Button>
+      <Button title='faves' onPress={() => setVisible('byy')}></Button>
+      <Button title='settings'></Button></View>
+      <View style={styles.row} ><View>{showScreen(visible)}</View></View>
       <View style ={styles.row}>
       <FlatList
             data={Object.keys(items2)}
