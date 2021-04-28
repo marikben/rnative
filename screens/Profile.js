@@ -7,6 +7,7 @@ import Header from '../components/Header.js'
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
     const [items2, setItems2] = useState({});
+    const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
     const db = firebase.database().ref(user.uid+'/');
     console.log(user.uid)
@@ -34,6 +35,18 @@ export default function Profile ({ navigation }) {
         );
       };
       
+      const printKey = (props) => {
+        console.log(props)
+        firebase.database().ref(user.uid+'/').child(props).remove()
+        console.log('success')
+        
+        firebase.database().ref(user.uid+'/').on('value', snapshot => {
+          const data = snapshot.val();
+          const prods = Object.values(data);
+          setItems(prods);
+        })
+        console.log(items)
+      }
       const deleteItem = (props) => {
         console.log(props.name)
         firebase.database().ref(user.uid+'/').child(props.name).remove()
@@ -46,11 +59,13 @@ export default function Profile ({ navigation }) {
         })
         console.log(items)
       }
+      console.log(Object.keys(items2))
     return(<View>
       <Header />
       <FlatList
           data={Object.keys(items2)}
-          renderItem={({ item }) => <Text>{items2[item].name}</Text>}
+          renderItem={({ item }) => (<View><Text>{Object.values(items2[item])}</Text>
+          <Button title='key' onPress={() => printKey(item)}></Button></View>)}
         />
       <FlatList
             keyExtractor={item => item.id} 
