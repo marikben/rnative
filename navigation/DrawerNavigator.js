@@ -57,6 +57,7 @@ const RouteConfigs = {
     }
   },
 
+
   Results: {
     screen: Results,
     navigationOptions: {

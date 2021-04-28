@@ -62,12 +62,41 @@ export default function Profile ({ navigation }) {
         );
       };
      
+    //much more efficient/faster to have this in the same component
     const prof2 = () => {
-      return(<View><Text>Böö</Text></View>)
+      return(<FlatList
+        data={Object.keys(items2)}
+        renderItem={({ item }) => (
+          <TouchableWithoutFeedback>
+          <ListItem bottomDivider >
+            <ListItem.Content>
+              <View style={styles.row_cell_timeplace}>
+              <ListItem.Title>{items2[item].name.length < 25
+                ? `${items2[item].name}`
+                : `${items2[item].name.substring(0, 29)}...`}
+              </ListItem.Title>
+              <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
+              <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
+              <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
+              </View>
+              <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
+                style={{
+                width:60,
+                height:100,
+                borderWidth:1,
+                borderColor:'grey',
+                resizeMode:'contain'
+              }}
+            /></View> 
+            </ListItem.Content>
+          </ListItem>
+          </TouchableWithoutFeedback>
+        )
+      } ListEmptyComponent={EmptyListMessage}/>)
     }
     const showScreen = (props) => {
       if(props=='user'){
-        return(<Favourites/>)
+        return(prof2())
       }else if (props=='faves') {
         return(<UserDetails/>)
       }else{
@@ -76,41 +105,11 @@ export default function Profile ({ navigation }) {
     }
     return(<View style={styles.container}>
       <Header />
-      <View style={styles.row} ><Button title='user' onPress={() => setVisible('user')}></Button>
+      <View style={styles.box} ><Button title='user' onPress={() => setVisible('user')}></Button>
       <Button title='faves' onPress={() => setVisible('faves')}></Button>
       <Button title='settings'></Button></View>
-      <View style={styles.row} ><View>{showScreen(visible)}</View></View>
-      <View style ={styles.row}>
-      <FlatList
-            data={Object.keys(items2)}
-            renderItem={({ item }) => (
-              <TouchableWithoutFeedback>
-              <ListItem bottomDivider >
-                <ListItem.Content>
-                  <View style={styles.row_cell_timeplace}>
-                  <ListItem.Title>{items2[item].name.length < 25
-                    ? `${items2[item].name}`
-                    : `${items2[item].name.substring(0, 29)}...`}
-                  </ListItem.Title>
-                  <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
-                  <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
-                  <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
-                  </View>
-                  <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
-                    style={{
-                    width:60,
-                    height:100,
-                    borderWidth:1,
-                    borderColor:'grey',
-                    resizeMode:'contain'
-                  }}
-                /></View> 
-                </ListItem.Content>
-              </ListItem>
-              </TouchableWithoutFeedback>
-            )
-          } ListEmptyComponent={EmptyListMessage}/>
-    </View></View>)
+      <View style ={styles.row}>{showScreen(visible)}</View>
+      </View>)
 }
 const styles = StyleSheet.create({
     container: {
@@ -138,8 +137,9 @@ const styles = StyleSheet.create({
       paddingRight: 16,
       marginLeft: 14,
       marginRight: 14,
-      marginTop: 100,
-      marginBottom: 50,
+      marginTop: -600,
+      marginBottom: 10,
+      width: '90%'
     },
      row_cell_timeplace: {
       flex: 1,
@@ -149,5 +149,15 @@ const styles = StyleSheet.create({
       marginTop: -115,
       paddingLeft: 240,
       flex: 0,
-    }
+    },
+    box: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      paddingBottom: 400,
+      marginTop: -200
+    },
   });
