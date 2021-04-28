@@ -3,6 +3,7 @@ import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, Vie
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import Header from '../components/Header.js'
+import { DrawerItems } from 'react-navigation-drawer';
 
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
@@ -10,15 +11,17 @@ export default function Profile ({ navigation }) {
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
     const db = firebase.database().ref(user.uid+'/');
-    console.log(user.uid)
+    //console.log(user.uid)
     useEffect(() => {
         firebase.database().ref(user.uid+'/').on('value', snapshot => {
+        
           const data = snapshot.val();
           const prods = Object.values(data);
           const keys = Object.entries(data);
           setItems(prods);
           setItems2(data)
           console.log(items2)
+          
         });
       }, []);
       
@@ -35,7 +38,7 @@ export default function Profile ({ navigation }) {
         );
       };
       
-      const printKey = (props) => {
+      const deleteItem = (props) => {
         console.log(props)
         firebase.database().ref(user.uid+'/').child(props).remove()
         console.log('success')
@@ -47,44 +50,35 @@ export default function Profile ({ navigation }) {
         })
         console.log(items)
       }
-      const deleteItem = (props) => {
-        console.log(props.name)
-        firebase.database().ref(user.uid+'/').child(props.name).remove()
-        console.log('success')
-        
-        firebase.database().ref(user.uid+'/').on('value', snapshot => {
-          const data = snapshot.val();
-          const prods = Object.values(data);
-          setItems(prods);
-        })
-        console.log(items)
-      }
-      console.log(Object.keys(items2))
-    return(<View>
+      const EmptyListMessage = ({item}) => {
+        return (
+          // Flat List Item
+          <Text>
+            No Data Found
+          </Text>
+        );
+      };
+     
+
+    return(<View style={styles.container}>
       <Header />
+      <View style ={styles.row}>
       <FlatList
-          data={Object.keys(items2)}
-          renderItem={({ item }) => (<View><Text>{Object.values(items2[item])}</Text>
-          <Button title='key' onPress={() => printKey(item)}></Button></View>)}
-        />
-      <FlatList
-            keyExtractor={item => item.id} 
-            renderItem={({item}) => (
+            data={Object.keys(items2)}
+            renderItem={({ item }) => (
               <TouchableWithoutFeedback>
               <ListItem bottomDivider >
                 <ListItem.Content>
                   <View style={styles.row_cell_timeplace}>
-                  
-                  <ListItem.Title>{item.name.length < 25
-                    ? `${item.name}`
-                    : `${item.name.substring(0, 29)}...`}
+                  <ListItem.Title>{items2[item].name.length < 25
+                    ? `${items2[item].name}`
+                    : `${items2[item].name.substring(0, 29)}...`}
                   </ListItem.Title>
-                  <ListItem.Subtitle>{item.brand}</ListItem.Subtitle>
-                  <ListItem.Subtitle>{item.index}</ListItem.Subtitle>
-                  <ListItem.Subtitle>Price: {item.price}</ListItem.Subtitle>
-                  <ListItem><Button title='Delete' onPress={() => deleteItem(item)}></Button></ListItem>
+                  <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
+                  <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
+                  <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
                   </View>
-                  <View style={styles.row_cell_temp}><Image source={{uri: item.image_link}} 
+                  <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
                     style={{
                     width:60,
                     height:100,
@@ -97,8 +91,8 @@ export default function Profile ({ navigation }) {
               </ListItem>
               </TouchableWithoutFeedback>
             )
-          } data={items} />
-    </View>)
+          } ListEmptyComponent={EmptyListMessage}/>
+    </View></View>)
 }
 const styles = StyleSheet.create({
     container: {
@@ -113,12 +107,28 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       //paddingTop: 50
      },
+     row: {
+      elevation: 1,
+      borderRadius: 2,
+      flex: 1,
+      flexDirection: "row", // main axis
+      justifyContent: "flex-start", // main axis
+      alignItems: "center", // cross axis
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 18,
+      paddingRight: 16,
+      marginLeft: 14,
+      marginRight: 14,
+      marginTop: 100,
+      marginBottom: 50,
+    },
      row_cell_timeplace: {
       flex: 1,
       flexDirection: "column",
     },
     row_cell_temp: {
-      //marginTop: -45,
+      marginTop: -115,
       paddingLeft: 240,
       flex: 0,
     }
