@@ -10,10 +10,10 @@ import UserDetails from '../components/UserDetails';
 export default function Profile ({ navigation }) {
     const [items, setItems] = useState([]);
     const [items2, setItems2] = useState({});
-    const [visible, setVisible] = useState('');
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
-    const db = firebase.database().ref(user.uid+'/');
+    const options = [{'name':'faves'}, {'name':'user'}, {'name':'settings'}]
+    const [opt, setOpt] = useState('');
     //console.log(user.uid)
     useEffect(() => {
         firebase.database().ref(user.uid+'/').on('value', snapshot => {
@@ -95,9 +95,9 @@ export default function Profile ({ navigation }) {
       } ListEmptyComponent={EmptyListMessage}/>)
     }
     const showScreen = (props) => {
-      if(props=='user'){
+      if(props.name=='user'){
         return(prof2())
-      }else if (props=='faves') {
+      }else if (props.name=='faves') {
         return(<UserDetails/>)
       }else{
         return(<View><Text>Byy</Text></View>)
@@ -105,10 +105,17 @@ export default function Profile ({ navigation }) {
     }
     return(<View style={styles.container}>
       <Header />
-      <View style={styles.box} ><Button title='user' onPress={() => setVisible('user')}></Button>
-      <Button title='faves' onPress={() => setVisible('faves')}></Button>
-      <Button title='settings'></Button></View>
-      <View style ={styles.row}>{showScreen(visible)}</View>
+      <View style={styles.box}>
+      <FlatList
+            data={options}
+            renderItem={({item})=>(
+            <View style={{paddingRight: 10}}>
+            <Button title={item.name} color="#EC88AC" onPress={() => setOpt(item)}></Button>
+            </View>
+            )} 
+         numColumns={3}
+            /></View>
+      <View style ={styles.row}>{showScreen(opt)}</View>
       </View>)
 }
 const styles = StyleSheet.create({
@@ -157,7 +164,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'column',
       flexWrap: 'wrap',
-      paddingBottom: 400,
-      marginTop: -200
+      //paddingBottom: 400,
+      //marginTop: -200
     },
   });
