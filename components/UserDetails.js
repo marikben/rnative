@@ -6,7 +6,10 @@ import Header from '../components/Header.js'
 import { DrawerItems } from 'react-navigation-drawer';
 
 export default function UserDetails () {
+    const user = firebase.auth().currentUser;
+    console.log(user)
     return(<View>
-        <Text>User</Text>
+        <Text>Username: {user.displayName}</Text>
+        <Text>Email: {user.email}</Text>
     </View>)
 }

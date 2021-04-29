@@ -4,7 +4,7 @@ import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import Header from '../components/Header.js'
 import { DrawerItems } from 'react-navigation-drawer';
-import Favourites from '../components/Favourites';
+import UserSettings from '../components/UserSettings';
 import UserDetails from '../components/UserDetails';
 
 export default function Profile ({ navigation }) {
@@ -12,7 +12,7 @@ export default function Profile ({ navigation }) {
     const [items2, setItems2] = useState({});
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
-    const options = [{'name':'faves'}, {'name':'user'}, {'name':'settings'}]
+    const options = [{'name':'user'}, {'name':'faves'}, {'name':'settings'}]
     const [opt, setOpt] = useState('');
     //console.log(user.uid)
     useEffect(() => {
@@ -64,7 +64,8 @@ export default function Profile ({ navigation }) {
      
     //much more efficient/faster to have this in the same component
     const prof2 = () => {
-      return(<FlatList
+      return(
+      <FlatList
         data={Object.keys(items2)}
         renderItem={({ item }) => (
           <TouchableWithoutFeedback>
@@ -96,11 +97,14 @@ export default function Profile ({ navigation }) {
     }
     const showScreen = (props) => {
       if(props.name=='user'){
-        return(prof2())
-      }else if (props.name=='faves') {
         return(<UserDetails/>)
-      }else{
-        return(<View><Text>Byy</Text></View>)
+      }else if (props.name=='faves') {
+        return(prof2())
+      }else if (props.name=='settings') {
+        return(<UserSettings/>)
+      }
+      else{
+        return(prof2())
       }
     }
     return(<View style={styles.container}>
@@ -115,7 +119,8 @@ export default function Profile ({ navigation }) {
             )} 
          numColumns={3}
             /></View>
-      <View style ={styles.row}>{showScreen(opt)}</View>
+      <View style ={styles.row}>
+        {showScreen(opt)}</View>
       </View>)
 }
 const styles = StyleSheet.create({
@@ -167,4 +172,5 @@ const styles = StyleSheet.create({
       //paddingBottom: 400,
       //marginTop: -200
     },
+    
   });
