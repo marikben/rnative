@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
 import Header from '../components/Header.js'
-import TagSelector from 'react-native-tag-selector';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function Quiz ({ navigation }){
     const [skin, setSkin] = useState('');
-    const [questions, setQuestions] = useState([{'name': 'Base products', 'id': 'foundation'}, 
-    {'name': 'Bronzer', 'id': 'bronzer'}, {'name': 'Blush', 'id': 'blush'},
-    {'name': 'Brows', 'id': 'eyebrow'}, {'name': 'Eyeliner', 'id': 'eyeliner'},
-    {'name': 'Eyeshadow', 'id': 'eyeshadow'}, {'name': 'Lipliner', 'id': 'lip_liner'}, 
-    {'name': 'Lipstick', 'id': 'lipstick'}, {'name': 'Mascara', 'id': 'mascara'},
-    {'name': 'Nail polish', 'id': 'nail_polish'}])
+    const [questions, setQuestions] = useState([{label: 'Base products', value: 'foundation'}, 
+    {label: 'Bronzer', value: 'bronzer'}, {label: 'Blush', value: 'blush'},
+    {label: 'Brows', value: 'eyebrow'}, {label: 'Eyeliner', value: 'eyeliner'},
+    {label: 'Eyeshadow', value: 'eyeshadow'}, {label: 'Lipliner', value: 'lip_liner'}, 
+    {label: 'Lipstick', value: 'lipstick'}, {label: 'Mascara', value: 'mascara'},
+    {label: 'Nail polish', value: 'nail_polish'}])
 
     return (
         <React.Fragment>
@@ -19,19 +19,14 @@ export default function Quiz ({ navigation }){
         <View style={styles.container}>
         <Text style={{fontSize: 16}}>Select product category</Text>
         <View style={styles.box}>
-        <FlatList
-            style={{marginTop:60}}
-            data={questions}
-            renderItem={({item})=>(
-            <View style={{justifyContent:'center',marginBottom:10, paddingRight: 5}}>
-            <Button title={item.name} color="#EC88AC" onPress={() => setSkin(item)}></Button>
-            </View>
-            )} 
-         numColumns={3}
-            />
-			</View>
+        <DropDownPicker
+          items={questions}
+          defaultIndex={0}
+          containerStyle={{width: 150, height: 40}}
+          onChangeItem={item => setSkin(item)}
+        /></View>
       <View style={styles.next}>
-      <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.id, 'name': skin.name})} title="Next">
+      <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.value, 'name': skin.label})} title="Next">
       </Button>
       </View>
         </View>
@@ -48,20 +43,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     flexWrap: 'wrap',
+    marginBottom: -100
     
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30
-   
+    marginTop: 200,
+    paddingBottom: -500
   },
   next: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -700
+   // marginTop: -500,
+    marginLeft: 250
+    
   }
   
   

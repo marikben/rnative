@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Button, FlatList, Image, Modal, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
-import Header from './Header.js'
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function UserSettings () {

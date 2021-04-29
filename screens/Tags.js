@@ -16,6 +16,7 @@ export default function Tags ({ navigation }) {
     console.log(selections)
     useEffect(() => {
         getTags(type) 
+        console.log(selections)
     })
 
     function getTags (param) {
