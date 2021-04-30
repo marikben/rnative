@@ -10,7 +10,9 @@ import UserMenu from '../components/UserMenu';
 import Header from '../components/Header';
 import Profile from '../screens/Profile';
 
+
 const RouteConfigs = {
+
 
   Signup: {
     screen: Signup,

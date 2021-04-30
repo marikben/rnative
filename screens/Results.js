@@ -11,7 +11,7 @@ export default function Results ({ navigation }) {
   const [mod, setMod] = useState('');
   const [items, setItems] = useState([]);
   const user = firebase.auth().currentUser;
-  console.log(user.uid)
+
   //console.log(tags)
 
 

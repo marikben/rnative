@@ -12,7 +12,7 @@ export default function Profile ({ navigation }) {
     const [items2, setItems2] = useState({});
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
-    const options = [{'name':'user'}, {'name':'faves'}, {'name':'settings'}]
+    const options = [{'name':'user'}, {'name':'faves'}, {'name':'settings'}, {'name': 'logout'}]
     const [opt, setOpt] = useState('');
     //console.log(user.uid)
     useEffect(() => {
@@ -61,7 +61,12 @@ export default function Profile ({ navigation }) {
           </Text>
         );
       };
-     
+     const signOut = () => {
+        firebase.auth().signOut().then(() => {
+         navigation.navigate('Login')
+        })
+        .catch(error => console.log(error))
+      }  
     //much more efficient/faster to have this in the same component
     const prof2 = () => {
       return(
@@ -102,6 +107,8 @@ export default function Profile ({ navigation }) {
         return(prof2())
       }else if (props.name=='settings') {
         return(<UserSettings/>)
+      }else if (props.name=='logout'){
+        signOut()
       }
       else{
         return(prof2())
@@ -117,7 +124,7 @@ export default function Profile ({ navigation }) {
             <Button title={item.name} color="#EC88AC" onPress={() => setOpt(item)}></Button>
             </View>
             )} 
-         numColumns={3}
+         numColumns={4}
             /></View>
       <View style ={styles.row}>
         {showScreen(opt)}</View>
