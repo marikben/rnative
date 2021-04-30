@@ -37,7 +37,7 @@ class UserMenu extends React.Component {
       
     }
 
-    signOut = () => {
+    const signOut = () => {
       var user = firebase.auth().currentUser
       console.log(user)
       if (user) {

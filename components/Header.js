@@ -4,19 +4,19 @@ import { Header } from 'react-native-elements';
 import DrawerTrigger from './DrawerTrigger'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { MenuProvider } from 'react-native-popup-menu';
-
+import firebase from '../database/firebaseDB';
 import UserMenu from './UserMenu';
 
 
-export default function ({navigation}) {
-  
+export default function ({ navigation }) {
+  const user = firebase.auth().currentUser;
     return (
         <Header 
         containerStyle={styles.header}
         leftComponent={<DrawerTrigger />}
         centerComponent={{text:'BEAUTY APP'}}
         rightComponent={
-          <UserMenu />}
+          <Text style={{color:'#E35D86'}} ><Icon name='user' color='grey' size={15}/>{user.displayName}</Text>}
       />
     )
   }
