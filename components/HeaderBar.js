@@ -9,9 +9,23 @@ import UserMenu from './UserMenu';
 import { useNavigation } from '@react-navigation/native';
 import { withNavigation } from 'react-navigation';
 class HeaderBar extends React.Component {
-  
+    constructor() {
+        super();
+        this.state = { 
+          uid: ''
+        }
+      }
   render() {
-    
+    if (firebase.auth().currentUser!=null)
+    this.state = { 
+      displayName: firebase.auth().currentUser.displayName,
+      uid: firebase.auth().currentUser.uid
+    }
+    if (firebase.auth().currentUser==null)
+    this.state = { 
+      displayName: 'moi',
+      uid:'123'
+    } 
     return (
         <View>
         <Header 
@@ -20,7 +34,7 @@ class HeaderBar extends React.Component {
         centerComponent={{text:'BEAUTY APP'}}
         rightComponent={
           <TouchableOpacity  onPress={() => this.props.navigation.navigate('Profile')}>
-              <Text style={{color:'#E35D86'}}><Icon name='user' color='grey' size={15}/>MOI</Text>
+              <Text style={{color:'#E35D86'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
           </TouchableOpacity>}
       /></View>
     )
