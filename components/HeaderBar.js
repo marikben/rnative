@@ -1,25 +1,30 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Header } from 'react-native-elements';
 import DrawerTrigger from './DrawerTrigger'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { MenuProvider } from 'react-native-popup-menu';
 import firebase from '../database/firebaseDB';
 import UserMenu from './UserMenu';
-
-
-export default function ({ navigation }) {
-  const user = firebase.auth().currentUser;
+import { useNavigation } from '@react-navigation/native';
+import { withNavigation } from 'react-navigation';
+class HeaderBar extends React.Component {
+  
+  render() {
+    
     return (
+        <View>
         <Header 
         containerStyle={styles.header}
         leftComponent={<DrawerTrigger />}
         centerComponent={{text:'BEAUTY APP'}}
         rightComponent={
-          <Text style={{color:'#E35D86'}} ><Icon name='user' color='grey' size={15}/>{user.displayName}</Text>}
-      />
+          <TouchableOpacity  onPress={() => this.props.navigation.navigate('Profile')}>
+              <Text style={{color:'#E35D86'}}><Icon name='user' color='grey' size={15}/>MOI</Text>
+          </TouchableOpacity>}
+      /></View>
     )
-  }
+  }}
   const triggerStyles = {
     triggerText: {
       color: 'white',
@@ -114,3 +119,5 @@ const menuProviderStyles = {
   menuProviderWrapper: styles.container,
   backdrop: styles.backdrop,
 };
+
+export default withNavigation(HeaderBar);

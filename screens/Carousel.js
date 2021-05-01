@@ -3,7 +3,7 @@ import firebase from '../database/firebaseDB';
 import {Dimensions, View, ImageBackground, FlatList, Text, TouchableWithoutFeedback, StatusBar} from 'react-native';
 import {Card} from '../components/Card'
 import {Title} from '../components/Title'
-import Header from '../components/Header.js'
+import HeaderBar from '../components/HeaderBar';
 
 export default class Carousel extends Component {
   constructor() {
@@ -82,7 +82,7 @@ export default class Carousel extends Component {
 
     return (
      <View style={styles.mainContainer}>
-    <Header />
+    <HeaderBar />
     <StatusBar hidden={true} />
         <FlatList
           horizontal

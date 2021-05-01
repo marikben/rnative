@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
-import Header from '../components/Header.js'
+import HeaderBar from '../components/HeaderBar.js'
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function Quiz ({ navigation }){
@@ -15,7 +15,7 @@ export default function Quiz ({ navigation }){
     return (
         <React.Fragment>
         <StatusBar hidden={true} />
-        <Header />
+        <HeaderBar />
         <View style={styles.container}>
         <Text style={{fontSize: 16}}>Select product category</Text>
         <View style={styles.box}>

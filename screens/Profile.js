@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
-import Header from '../components/Header.js'
+import HeaderBar from '../components/HeaderBar.js'
 import { DrawerItems } from 'react-navigation-drawer';
 import UserSettings from '../components/UserSettings';
 import UserDetails from '../components/UserDetails';
@@ -115,7 +115,7 @@ export default function Profile ({ navigation }) {
       }
     }
     return(<View style={styles.container}>
-      <Header />
+      <HeaderBar />
       <View style={styles.box}>
       <FlatList
             data={options}

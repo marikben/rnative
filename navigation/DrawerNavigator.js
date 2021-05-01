@@ -7,7 +7,7 @@ import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
 import UserMenu from '../components/UserMenu';
-import Header from '../components/Header';
+import HeaderBar from '../components/HeaderBar';
 import Profile from '../screens/Profile';
 
 
@@ -68,12 +68,6 @@ const RouteConfigs = {
   },
   UserMenu: {
     screen: UserMenu,
-    navigationOptions: {
-      drawerLabel: () => null
-    }
-  },
-  Header: {
-    screen: Header,
     navigationOptions: {
       drawerLabel: () => null
     }
