@@ -3,7 +3,7 @@ import firebase from '../database/firebaseDB';
 import { View, Text } from 'react-native';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/AntDesign'
-
+import { withNavigation } from 'react-navigation';
 //original PureComponent
 class UserMenu extends React.Component {
   _menu = null;
@@ -42,7 +42,9 @@ class UserMenu extends React.Component {
       console.log(user)
       if (user) {
         firebase.auth().signOut().then(() => {
+            this.props.navigation.navigate('Profile', {'displayName': 'test', 'uid': '000'})
             console.log("User successfully logged out");
+            
              // Just for the example.
         }).catch(error => console.log('Something went wrong! ', error))
     } else {console.log(error)
@@ -65,4 +67,4 @@ class UserMenu extends React.Component {
   }
 };
 
-export default UserMenu;
+export default withNavigation(UserMenu);

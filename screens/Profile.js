@@ -12,7 +12,8 @@ export default function Profile ({ navigation }) {
     const [items2, setItems2] = useState({});
     const [keys, seKeys] = useState([]);
     const user = firebase.auth().currentUser;
-    const options = [{'name':'user'}, {'name':'faves'}, {'name':'settings'}, {'name': 'logout'}]
+    const options = [{'name':'user', 'color': '#EC88AC'}, {'name':'faves', 'color': '#EC88AC'}, 
+    {'name':'settings', 'color': '#EC88AC'}, {'name': 'logout', 'color': '#F21E6A'}]
     const [opt, setOpt] = useState('');
     //console.log(user.uid)
     useEffect(() => {
@@ -111,7 +112,7 @@ export default function Profile ({ navigation }) {
         signOut()
       }
       else{
-        return(prof2())
+        return(<UserDetails/>)
       }
     }
     return(<View style={styles.container}>
@@ -121,7 +122,7 @@ export default function Profile ({ navigation }) {
             data={options}
             renderItem={({item})=>(
             <View style={{paddingRight: 10}}>
-            <Button title={item.name} color="#EC88AC" onPress={() => setOpt(item)}></Button>
+            <Button title={item.name} color={item.color} onPress={() => setOpt(item)}></Button>
             </View>
             )} 
          numColumns={4}
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       flexWrap: 'wrap',
       //paddingBottom: 400,
-      //marginTop: -200
+      marginTop: 10
     },
     
   });
