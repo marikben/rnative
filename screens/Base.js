@@ -17,12 +17,12 @@ export default function Quiz ({ navigation }){
         <StatusBar hidden={true} />
         <HeaderBar />
         <View style={styles.container}>
-        <Text style={{fontSize: 16}}>Select product category</Text>
+        <Text style={{fontSize: 18}}>Select product category</Text>
         <View style={styles.box}>
         <DropDownPicker
           items={questions}
           defaultIndex={0}
-          containerStyle={{width: 150, height: 40}}
+          containerStyle={{width: 300, height: 40}}
           onChangeItem={item => setSkin(item)}
         /></View>
       <View style={styles.next}>
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    marginBottom: -100
+    marginBottom: -100,
+    
     
   },
   container: {

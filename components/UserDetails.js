@@ -8,8 +8,14 @@ import { DrawerItems } from 'react-navigation-drawer';
 export default function UserDetails () {
     const user = firebase.auth().currentUser;
     console.log(user)
-    return(<View>
-        <Text>Username: {user.displayName}</Text>
-        <Text>Email: {user.email}</Text>
+    return(<View style={styles.container}>
+        <Text style={{fontSize: 16}}>Username: {user.displayName}</Text>
+        <Text style={{fontSize: 16}}>Email: {user.email}</Text>
     </View>)
 }
+
+const styles = StyleSheet.create({
+container: {
+    marginTop: -200
+}
+});

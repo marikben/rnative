@@ -13,14 +13,7 @@ export default function UserSettings () {
     {label: 'Eyeshadow', value: 'eyeshadow'}, {label: 'Lipliner', value: 'lip_liner'}, 
     {label: 'Lipstick', value: 'lipstick'}, {label: 'Mascara', value: 'mascara'},
     {label: 'Nail polish', value: 'nail_polish'}])
-    return(<View>
-         <View >
-         <DropDownPicker
-    items={questions}
-    defaultIndex={0}
-    containerStyle={{width: 150, height: 40}}
-    onChangeItem={item => setSelectedValue(item)}
-/>
-    </View>
-    </View>)
+    return(
+         <Button title='delete user' onClick={() => Alert.alert('Are you sure?')} color='#ff0000'></Button>
+    )
 }
