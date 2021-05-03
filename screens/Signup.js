@@ -15,6 +15,20 @@ export default class Signup extends Component {
     }
   }
 
+  createTwoButtonAlert = (props) =>
+  Alert.alert(
+    "An error occured, please try again:",
+    props,
+    [
+      {
+        text: "Cancel",
+        onPress: () => this.props.navigation.navigate('Login'),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => this.props.navigation.navigate('Login') }
+    ]
+  );
+
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -44,7 +58,8 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Login')
       })
-      .catch(error => this.setState({ errorMessage: error.message }))      
+      .catch(error => this.createTwoButtonAlert(error.message))
+      .then(() => this.props.navigation.navigate('Login'))    
     }
   }
 
