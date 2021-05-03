@@ -20,11 +20,11 @@ export default function Profile ({ navigation }) {
         firebase.database().ref(user.uid+'/').on('value', snapshot => {
         
           const data = snapshot.val();
-          const prods = Object.values(data);
-          const keys = Object.entries(data);
-          setItems(prods);
-          setItems2(data)
-          console.log(items2)
+          if(data){setItems2(data)
+            console.log(items2)
+          }else{
+            console.log('empty list')
+          }
           
         });
       }, []);
@@ -45,15 +45,19 @@ export default function Profile ({ navigation }) {
       const deleteItem = (props) => {
         console.log(props)
         firebase.database().ref(user.uid+'/').child(props).remove()
-        console.log('success')
-        
+       
         firebase.database().ref(user.uid+'/').on('value', snapshot => {
           const data = snapshot.val();
-          const prods = Object.values(data);
-          setItems(prods);
+          if(data){setItems2(data)
+            console.log(items2)
+          }else{
+            console.log('empty list')
+            showScreen('faves')
+          }
         })
-        console.log(items)
+        console.log('moi')
       }
+
       const EmptyListMessage = ({item}) => {
         return (
           // Flat List Item
@@ -70,36 +74,44 @@ export default function Profile ({ navigation }) {
       }  
     //much more efficient/faster to have this in the same component
     const prof2 = () => {
+      if(Object.keys(items2)===null | Object.keys(items2)===undefined){
       return(
+        <Text>
+        No Data Found
+      </Text>
+      )
+    }else{
+      return (
       <FlatList
-        data={Object.keys(items2)}
-        renderItem={({ item }) => (
-          <TouchableWithoutFeedback>
-          <ListItem bottomDivider >
-            <ListItem.Content>
-              <View style={styles.row_cell_timeplace}>
-              <ListItem.Title>{items2[item].name.length < 25
-                ? `${items2[item].name}`
-                : `${items2[item].name.substring(0, 29)}...`}
-              </ListItem.Title>
-              <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
-              <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
-              <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
-              </View>
-              <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
-                style={{
-                width:60,
-                height:100,
-                borderWidth:1,
-                borderColor:'grey',
-                resizeMode:'contain'
-              }}
-            /></View> 
-            </ListItem.Content>
-          </ListItem>
-          </TouchableWithoutFeedback>
-        )
-      } ListEmptyComponent={EmptyListMessage}/>)
+      data={Object.keys(items2)}
+      renderItem={({ item }) => (
+        <TouchableWithoutFeedback>
+        <ListItem bottomDivider >
+          <ListItem.Content>
+            <View style={styles.row_cell_timeplace}>
+            <ListItem.Title>{items2[item].name.length < 25
+              ? `${items2[item].name}`
+              : `${items2[item].name.substring(0, 29)}...`}
+            </ListItem.Title>
+            <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
+            <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
+            <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
+            </View>
+            <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
+              style={{
+              width:60,
+              height:100,
+              borderWidth:1,
+              borderColor:'grey',
+              resizeMode:'contain'
+            }}
+          /></View> 
+          </ListItem.Content>
+        </ListItem>
+        </TouchableWithoutFeedback>
+      )
+    } ListEmptyComponent={EmptyListMessage}/>)
+    }
     }
     const showScreen = (props) => {
       if(props.name=='user'){
