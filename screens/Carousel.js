@@ -33,7 +33,7 @@ export default class Carousel extends Component {
           </View>
         </ImageBackground>
       </TouchableWithoutFeedback>
-      <Text style={{marginLeft: 15}}>{item.description}</Text>
+      <Text style={styles.text}>{item.description}</Text>
     </Card>
   );
 
@@ -57,14 +57,17 @@ export default class Carousel extends Component {
       {
         src:
           'https://media.self.com/photos/57e00e471db118765d302bdd/2:1/pass/sub-channel-beauty_makeup.jpg',
-        title: 'Brunch',
-        description: 'Bää'
+        title: 'Personalized',
+        description: <Text>Take a quiz to find makeup products that fit your criteria:{'\n'}
+        select product type and preferences for it!</Text>
       },
       {
         src:
           'https://media-we-cdn.oriflame.com/-/media/Images/Navigation/Main-menu/Discover-2020/Beauty-by-sweden/13370393_2732x778x580.ashx?u=0101010000',
-        title: 'Lunch',
-        description: 'Böö'
+        title: 'Favourites',
+        description: <Text>Manage interesting products by adding them to your shopping list and
+        deleting them when you feel like it. You can always come back to your saved items by 
+        signing back to your account.</Text>
       },
       {
         src:
@@ -98,7 +101,7 @@ export default class Carousel extends Component {
 
 const styles = {
   mainContainer: {
-    flex: 1,
+    flex: 1
   },
   cardContainerStyle: {
   
@@ -123,5 +126,11 @@ const styles = {
     color: '#fff',
     fontSize: 30,
     marginVertical: 10,
+    textShadowColor: '#E11584',
+    textShadowRadius: 10
   },
+  text: {marginLeft: 15,
+     marginTop: 20,
+     fontSize: 18,
+    padding: 5}
 };
