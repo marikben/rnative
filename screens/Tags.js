@@ -9,6 +9,7 @@ export default function Tags ({ navigation }) {
     const type = navigation.getParam('list');
     const name = navigation.getParam('name');
     const tags = getTags(type);
+    const [key, setKey] = useState(1);
     const data = [{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
     {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'}];
 
@@ -71,6 +72,42 @@ export default function Tags ({ navigation }) {
         }
     }
     
+    const tagStyle = () => {
+      
+      if(selections.length===0){
+        return {
+          borderWidth: 0.25,
+          borderColor: '#999999',  
+          borderRadius: 5,  
+          backgroundColor: '#FFF',
+          padding: 7,
+          margin: 2
+        }
+      }else{
+        return {
+          borderWidth: 0.25,
+          borderColor: '#999999',  
+          borderRadius: 5, 
+          backgroundColor: '#dddddd',
+          padding: 7,
+          margin: 2
+        }
+      }
+    }
+    console.log(key)
+    const tagSelect = () => {
+      return <TagSelector 
+      key={key}
+      tags={tags}
+                //containerStyle = {styles.container}
+                selectedTagStyle = {styles.itemSelected}
+                tagStyle = {styles.item}
+                expandTextStyle={styles.label}
+                //separatorStyle = {styles.separator}
+                //expandBtnStyle = {styles.btnStyle}
+                //expandTextStyle = {styles.btnText}
+      onChange={(selected) => setSelections({ selected })} />
+    }
     return(
         <React.Fragment>
         <Header 
@@ -83,19 +120,9 @@ export default function Tags ({ navigation }) {
        
         <Text style={{padding: 10, fontSize: 16}}>Select preferences for your {name}</Text>
         <View style={styles.buttonContainer}>
-				<TagSelector 
-					tags={tags}
-                    //containerStyle = {styles.container}
-                    selectedTagStyle = {styles.itemSelected}
-                    tagStyle = {styles.item}
-                    expandTextStyle={styles.label}
-                    //separatorStyle = {styles.separator}
-                    //expandBtnStyle = {styles.btnStyle}
-                    //expandTextStyle = {styles.btnText}
-  
-					onChange={(selected) => setSelections({ selected })} />
+				{tagSelect()}
 			</View>
-            <Button color='#E35D86' onPress={() => navigation.navigate('Results', {'list':selections, 'type':type})} title="Show products"></Button>
+            <Button color='#E35D86' onPress={() => navigation.navigate('Results', {'list':selections, 'type':type}, setSelections([]), setKey(key+1))} title="Show products"></Button>
     </View>
     </React.Fragment>)
 }
