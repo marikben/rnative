@@ -3,26 +3,27 @@ import { Alert, Button, FlatList, Image, Modal, StyleSheet, Text, View, Touchabl
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import DropDownPicker from 'react-native-dropdown-picker';
-
-export default function UserSettings () {
-    const createTwoButtonAlert = () => {
-        console.log('byy')
-        Alert.alert(
-        "Are you sure?",
-        "All of your data will be permantently lost",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log('bää'),
-            style: "cancel"
-          },
-          { text: "OK", onPress: () => console.log('Login') }
-        ],
-        { cancelable: false }
-      );
-       
-    }
-   
+import { withNavigation } from 'react-navigation';
+class UserSettings extends React.Component {
+    
+    render(){
+        createTwoButtonAlert = () => {
+            console.log('byy')
+            Alert.alert(
+            "Are you sure?",
+            "All of your data will be permantently lost",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log('bää'),
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => this.props.navigation.navigate('Base') }
+            ],
+            { cancelable: false }
+          );
+           
+        }
     return(<View>
         <Text>Byy</Text>
         
@@ -31,4 +32,5 @@ export default function UserSettings () {
     </View>
          
     )
-}
+}}
+export default withNavigation(UserSettings);
