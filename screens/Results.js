@@ -112,7 +112,8 @@ export default function Results ({ navigation }) {
                   <ListItem.Subtitle>{item.brand}</ListItem.Subtitle>
                   <ListItem.Subtitle>Price: {item.price}</ListItem.Subtitle>
                   </View>
-                  <View style={styles.row_cell_temp}><Image source={{uri: item.image_link}} 
+                  <View style={styles.row_cell_temp}><Image source={item.image_link ? {uri: item.image_link} 
+                  : {uri: 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg'}} 
                     style={{
                     width:60,
                     height:100,
