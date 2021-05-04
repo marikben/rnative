@@ -14,6 +14,9 @@ export default function Results ({ navigation }) {
 
   //console.log(tags)
 
+  useEffect(() => {
+    getData()
+  })
 
   async function getData () {
     const url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_tags='+tags.selected+'&product_type='+type;
@@ -33,6 +36,7 @@ export default function Results ({ navigation }) {
     setModalVisible(true);
     console.log(mod)
   }
+
   const saveItem = () => {
     console.log(mod)
     firebase.database().ref(user.uid+'/').push(
@@ -88,7 +92,7 @@ export default function Results ({ navigation }) {
           />}
         />
         <View style={styles.container}>
-        <Button color='#E35D86' onPress={getData} title='SHOW'></Button>
+        <Button color='#E35D86' onPress={() => navigation.navigate('Base')} title='New quiz'></Button>
         </View>
       
         <View style ={styles.row}>
