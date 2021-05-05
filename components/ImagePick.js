@@ -16,6 +16,7 @@ export default function ImagePick() {
         }
       }
     })();
+    getImage()
   }, []);
 
   const uploadImage = async(uri) => {
@@ -53,14 +54,14 @@ export default function ImagePick() {
      setImage2(url)
     })
     .catch((e) => console.log('getting downloadURL of image error => ', e));
-    
+     
   ;}
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image2 }} style={{ width: 200, height: 200 }} />}
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+     <Image source={{ uri: image2 }} style={{ width: 200, height: 200 }} />
+     
     </View>
   );
 }
