@@ -5,7 +5,7 @@ import firebase from '../database/firebaseDB';
 
 export default function ImagePick() {
   const [image, setImage] = useState(null);
-  const [image2, setImage2] = useState(null);
+  const [image2, setImage2] = useState('https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg');
   const user = firebase.auth().currentUser;
   useEffect(() => {
     (async () => {
