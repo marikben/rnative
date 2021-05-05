@@ -4,9 +4,11 @@ import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { withNavigation } from 'react-navigation';
+
+
 class UserSettings extends React.Component {
-    
-    render(){
+
+      render(){
         createTwoButtonAlert = () => {
             console.log('byy')
             Alert.alert(
@@ -18,11 +20,17 @@ class UserSettings extends React.Component {
                 onPress: () => console.log('bää'),
                 style: "cancel"
               },
-              { text: "OK", onPress: () => this.props.navigation.navigate('Base') }
+              { text: "OK", onPress: () => deleteUser() }
             ],
             { cancelable: false }
-          );
-           
+          ); 
+        }
+        deleteUser = () => {
+          firebase.auth().currentUser.delete().then( () =>
+            this.props.navigation.navigate('Signup')
+        ).catch(function (error) {
+            console.error({error})
+          })
         }
     return(<View>
         <Text>Byy</Text>
