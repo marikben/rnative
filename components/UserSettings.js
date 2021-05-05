@@ -30,13 +30,27 @@ class UserSettings extends React.Component {
             console.error({error})
           })
         }
-    return(<View>
-        <Text>Byy</Text>
+
         
-        <Button title='delete user' onPress={() => createTwoButtonAlert()} color='#ff0000'></Button>
+    return(<View style={styles.container}>
+        <View style={styles.listcontainer}><Text>Byy</Text>
         <ImagePick />   
+        <Button title='delete user' onPress={() => createTwoButtonAlert()} color='#ff0000'></Button>
     </View>
-         
+    </View>     
     )
 }}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+   },
+   listcontainer: {
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    margin: 100
+   }})
 export default withNavigation(UserSettings);
