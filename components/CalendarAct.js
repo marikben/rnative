@@ -1,19 +1,25 @@
-import React, { Component, useState } from 'react';
-import { Text, View, DateTime } from 'react-native';
+import React, { Component, useState, useEffect } from 'react';
+import { Button, Text, TextInput, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-export default function CalendarView (){
-    const [select, setSelect] = useState('')
-    const [waterObject, setWaterObject] = React.useState({});
+export default function CalendarAct ({ navigation }){
     const [selected, setSelected] = React.useState(null);
-    const [marked, setMarked] = useState ({})
-
-        const selectedDate = (day) => {
-            console.log(day)
-            setMarked({...marked, [day]: {selected: true, desc: 'moi'}})
+    const [marked, setMarked] = useState ({});
+    const [desc, setDesc] = useState('');
+   
+    const selectedDate = (props) => {
+            setMarked({...marked, [selected]: {selected: true, desc: props}})
             console.log(marked)
         }
-      
+    const dateView = () => {
+        if(selected){
+            return <View>
+                <Text>{selected}</Text>
+                </View>
+        }else{
+            return <Text>Choose a date from the calendar</Text>
+        }
+    }
     return(<View>
         <Calendar
         theme={{
@@ -27,11 +33,13 @@ export default function CalendarView (){
         }}
         onDayPress={(day) => {
                 setSelected(day["dateString"])
-                selectedDate(day["dateString"])
-            
+                
         }}
         markedDates={{...marked, [selected] : {selected: true, selectedColor: '#81c5fe', desc: 'valittu'}}}
           />
-          <Text>Moi {marked[selected].desc}</Text>
+          <Text>Appointments: </Text>
+          <View>{dateView()}</View>
+          <TextInput onChangeText={setDesc}
+        value={desc}></TextInput><Button title='save' onPress={() => selectedDate(desc)}/>
     </View>)
 }

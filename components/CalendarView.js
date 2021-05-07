@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { View, Text, Button, Platform } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import CalendarAct from './CalendarAct';
-export default function CalendarView() {
+
+export default function CalendarView({ navigation }) {
   useEffect(() => {
     (async () => {
       const { status } = await Calendar.requestCalendarPermissionsAsync();

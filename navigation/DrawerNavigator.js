@@ -14,7 +14,7 @@ import Appointments from '../screens/Appointments';
 
 const RouteConfigs = {
 
-
+ 
   Signup: {
     screen: Signup,
     navigationOptions: {

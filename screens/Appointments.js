@@ -13,7 +13,7 @@ export default function Appointments ({ navigation }) {
     return(<View style={styles.container}>
       <HeaderBar />
       <View style={styles.box}>
-      <CalendarView/></View>
+      <CalendarView /></View>
       </View>)
 }
 const styles = StyleSheet.create({
