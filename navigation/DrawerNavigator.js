@@ -10,7 +10,7 @@ import UserMenu from '../components/UserMenu';
 import CalendarView from '../components/CalendarView';
 import Profile from '../screens/Profile';
 import Appointments from '../screens/Appointments';
-
+import CalendarAct from '../components/CalendarAct';
 
 const RouteConfigs = {
 

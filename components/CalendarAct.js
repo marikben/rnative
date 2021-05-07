@@ -13,9 +13,10 @@ export default function CalendarAct ({ navigation }){
             console.log(marked)
         }
     const dateView = () => {
-        if(selected){
+        if(marked[selected]){
             return <View>
-                <Text>Appointments on {selected}</Text>
+                <Text>Appointments on {selected}:</Text>
+                <Text>{marked[selected].desc !== undefined ? marked[selected].desc : 'moi'}</Text>
                 </View>
         }else{
             return <Text>Choose a date from the calendar</Text>
@@ -29,6 +30,7 @@ export default function CalendarAct ({ navigation }){
             selectedDayTextColor: '#ffffff',
             selectedDayBackgroundColor: '#c24a6b',
             dayTextColor: '#555555',
+            todayTextColor: '#ffffff',
             monthTextColor: '#555555',
             textMonthFontWeight: 'bold',
             arrowColor: '#FFC0CB'
@@ -47,8 +49,8 @@ export default function CalendarAct ({ navigation }){
 
 const styles = StyleSheet.create({
     input: {
-        borderWidth : 0.2, 
-        borderBottomWidth: 0.2,
+        borderWidth : 0.3, 
+        borderBottomWidth: 0.15,
         marginTop: 5, 
         marginBottom: 5
     }
