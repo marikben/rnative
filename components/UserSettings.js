@@ -8,14 +8,13 @@ class UserSettings extends React.Component {
 
       render(){
         createTwoButtonAlert = () => {
-            console.log('byy')
             Alert.alert(
             "Are you sure?",
             "All of your data will be permantently lost",
             [
               {
                 text: "Cancel",
-                onPress: () => console.log('bää'),
+                onPress: () => console.log('cancelled'),
                 style: "cancel"
               },
               { text: "OK", onPress: () => deleteUser() }

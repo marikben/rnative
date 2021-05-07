@@ -39,7 +39,6 @@ class UserMenu extends React.Component {
 
     const signOut = () => {
       var user = firebase.auth().currentUser
-      console.log(user)
       if (user) {
         firebase.auth().signOut().then(() => {
             this.props.navigation.navigate('Profile', {'displayName': 'test', 'uid': '000'})

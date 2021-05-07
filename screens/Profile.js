@@ -14,13 +14,13 @@ export default function Profile ({ navigation }) {
     const options = [{'name':'user', 'color': '#EC88AC'}, {'name':'faves', 'color': '#EC88AC'}, 
     {'name':'settings', 'color': '#EC88AC'}, {'name': 'logout', 'color': '#F21E6A'}]
     const [opt, setOpt] = useState('');
-    //console.log(user.uid)
+    
     useEffect(() => {
         firebase.database().ref(user.uid+'/').on('value', snapshot => {
         
           const data = snapshot.val();
           if(data){setItems2(data)
-            console.log(items2)
+            
           }else{
             console.log('empty list')
             setItems2({})
@@ -51,7 +51,7 @@ export default function Profile ({ navigation }) {
           if(data){
             setItems2(data)
             setKey(key+1)
-            console.log(items2)
+            
           }else{
             
             setItems2({})

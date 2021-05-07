@@ -13,11 +13,8 @@ export default function Tags ({ navigation }) {
     const data = [{'name': 'Vegan', 'id': 'Vegan'}, {'name': 'Natural', 'id': 'Natural'},
     {'name': 'Hypoallergenic', 'id': 'Hypoallergenic'}, {'name': 'Cruelty free', 'id': 'Cruelty free'}];
 
-
-    console.log(selections)
     useEffect(() => {
         getTags(type) 
-        console.log(selections)
     })
 
     function getTags (param) {
@@ -94,7 +91,7 @@ export default function Tags ({ navigation }) {
         }
       }
     }
-    console.log(key)
+    
     const tagSelect = () => {
       return <TagSelector 
       key={key}

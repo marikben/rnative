@@ -12,7 +12,6 @@ export default function Results ({ navigation }) {
   const [items, setItems] = useState([]);
   const user = firebase.auth().currentUser;
 
-  //console.log(tags)
 
   useEffect(() => {
     getData()
@@ -24,7 +23,7 @@ export default function Results ({ navigation }) {
       const response = await fetch(url);
       const prod = await response.json();
       setData(prod);
-      console.log(data);
+      
     }
     catch (error) {
     setData('Error', error);
@@ -34,11 +33,11 @@ export default function Results ({ navigation }) {
   const module = (props) => {
     setMod(props)
     setModalVisible(true);
-    console.log(mod)
+   
   }
 
   const saveItem = () => {
-    console.log(mod)
+    
     firebase.database().ref(user.uid+'/').push(
       {'nro': mod.id, 'name': mod.name, 'brand': mod.brand, 'price': mod.price, 'picture': mod.image_link}
     );

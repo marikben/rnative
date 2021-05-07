@@ -8,7 +8,6 @@ import { DrawerItems } from 'react-navigation-drawer';
 export default function UserDetails () {
     const user = firebase.auth().currentUser;
     const [image2, setImage2] = useState('https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg');
-    console.log(user)
     
     useEffect (() => {
         getImage()
