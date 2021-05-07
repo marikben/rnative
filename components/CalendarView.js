@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, Platform } from 'react-native';
 import * as Calendar from 'expo-calendar';
-
+import CalendarAct from './CalendarAct';
 export default function CalendarView() {
   useEffect(() => {
     (async () => {
@@ -22,6 +22,7 @@ export default function CalendarView() {
         alignItems: 'center',
         justifyContent: 'space-around',
       }}>
+        <CalendarAct />
       <Text>Calendar Module Example</Text>
       <Button title="Create a new calendar" onPress={createCalendar} />
     </View>
