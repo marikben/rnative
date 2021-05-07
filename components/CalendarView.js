@@ -8,8 +8,7 @@ export default function CalendarView() {
       const { status } = await Calendar.requestCalendarPermissionsAsync();
       if (status === 'granted') {
         const calendars = await Calendar.getCalendarsAsync();
-        console.log('Here are all your calendars:');
-        console.log({ calendars });
+        
       }
     })();
   }, []);
