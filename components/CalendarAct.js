@@ -1,16 +1,16 @@
 import React, { Component, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, DateTime } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 export default function CalendarView (){
     const [select, setSelect] = useState('')
     const [waterObject, setWaterObject] = React.useState({});
     const [selected, setSelected] = React.useState(null);
-    const [marked, setMarked] = useState ([])
+    const [marked, setMarked] = useState ({})
 
         const selectedDate = (day) => {
             console.log(day)
-            setMarked([...marked, {[day]: {selected: true}}])
+            setMarked({...marked, [day]: {selected: true}})
             console.log(marked)
         }
       
@@ -30,7 +30,7 @@ export default function CalendarView (){
                 selectedDate(day["dateString"])
             
         }}
-        markedDates={{ [selected]: {selected: true, selectedColor: '#81c5fe'}}}
+        markedDates={{...marked, [selected] : {selected: true, selectedColor: '#81c5fe'}}}
           />
           <Text>Moi {select}</Text>
     </View>)
