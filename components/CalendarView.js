@@ -23,8 +23,7 @@ export default function CalendarView({ navigation }) {
         justifyContent: 'space-around',
       }}>
         <CalendarAct />
-      <Text>Calendar Module Example</Text>
-      <Button title="Create a new calendar" onPress={createCalendar} />
+      
     </View>
   );
 }
