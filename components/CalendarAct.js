@@ -10,7 +10,7 @@ export default function CalendarView (){
 
         const selectedDate = (day) => {
             console.log(day)
-            setMarked({...marked, [day]: {selected: true}})
+            setMarked({...marked, [day]: {selected: true, desc: 'moi'}})
             console.log(marked)
         }
       
@@ -30,8 +30,8 @@ export default function CalendarView (){
                 selectedDate(day["dateString"])
             
         }}
-        markedDates={{...marked, [selected] : {selected: true, selectedColor: '#81c5fe'}}}
+        markedDates={{...marked, [selected] : {selected: true, selectedColor: '#81c5fe', desc: 'valittu'}}}
           />
-          <Text>Moi {select}</Text>
+          <Text>Moi {marked[selected].desc}</Text>
     </View>)
 }
