@@ -7,8 +7,9 @@ import Signup from '../screens/Signup';
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
 import UserMenu from '../components/UserMenu';
-import HeaderBar from '../components/HeaderBar';
+import CalendarView from '../components/CalendarView';
 import Profile from '../screens/Profile';
+import Appointments from '../screens/Appointments';
 
 
 const RouteConfigs = {
@@ -41,6 +42,10 @@ const RouteConfigs = {
     //navigationOptions: {
      // drawerLabel: () => null
     //}
+  },
+
+  Appointments: {
+    screen: Appointments
   },
 
   Base: {
