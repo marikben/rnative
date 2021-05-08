@@ -14,7 +14,6 @@ import CalendarAct from '../components/CalendarAct';
 
 const RouteConfigs = {
 
- 
   Signup: {
     screen: Signup,
     navigationOptions: {
@@ -29,7 +28,9 @@ const RouteConfigs = {
       drawerLabel: () => null,
     }
   },
-
+  CalendarView: {
+    screen: CalendarView
+  },
   Profile: {
     screen: Profile,
     //navigationOptions: {

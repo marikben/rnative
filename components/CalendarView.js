@@ -1,53 +1,86 @@
-import React, { useEffect } from 'react';
-import { View, Text, Button, Platform } from 'react-native';
-import * as Calendar from 'expo-calendar';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button, Platform, StyleSheet, TextInput } from 'react-native';
 import CalendarAct from './CalendarAct';
+import HeaderBar from '../components/HeaderBar';
+import { Calendar } from 'react-native-calendars';
+import firebase from '../database/firebaseDB';
 
 export default function CalendarView({ navigation }) {
-  useEffect(() => {
-    (async () => {
-      const { status } = await Calendar.requestCalendarPermissionsAsync();
-      if (status === 'granted') {
-        const calendars = await Calendar.getCalendarsAsync();
+  const [dates, setDates] = useState({});
+  const [selected, setSelected] = React.useState(null);
+    const [marked, setMarked] = useState ({});
+    const [desc, setDesc] = useState('');
+    const user = firebase.auth().currentUser;
+    useEffect(() => {
+      firebase.database().ref(user.uid+'/dates').on('value', snapshot => {
+      
+        const data = snapshot.val();
+        //console.log(Object.values(data))
+        if(data){
+        const prods = Object.values(data)
+        setDates(prods[2])
+        console.log(dates)
+        }else{
+          console.log('empty list')
+          setDates({})
+        }
         
-      }
-    })();
-  }, []);
+      });
+    }, []);
 
+    const selectedDate = (props) => {
+            setDesc('')
+            setMarked({...marked, [selected]: {selected: true, desc: props}})
+            firebase.database().ref(user.uid+'/dates').push(
+              {[selected]: {selected: true, desc: props}}
+            );
+            console.log(marked)
+        }
+    const dateView = () => {
+        if(marked[selected]){
+            return <View>
+                <Text>Appointments on {selected}:</Text>
+                <Text>{marked[selected].desc !== undefined ? marked[selected].desc : 'moi'}</Text>
+                </View>
+        }else{
+            return <Text>Choose a date from the calendar</Text>
+        }
+    }
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-      }}>
-        <CalendarAct />
+    <View>
+        <HeaderBar/>
+        <Calendar
+        theme={{
+            calendarBackground: '#EBECF0',
+            textSectionTitleColor: '#555555',
+            selectedDayTextColor: '#ffffff',
+            selectedDayBackgroundColor: '#c24a6b',
+            dayTextColor: '#555555',
+            todayTextColor: '#ffffff',
+            monthTextColor: '#555555',
+            textMonthFontWeight: 'bold',
+            arrowColor: '#FFC0CB'
+        }}
+        onDayPress={(day) => {
+                setSelected(day["dateString"])
+                
+        }}
+        markedDates={{...dates, [selected] : {selected: true, selectedColor: '#FFDAE0', desc: 'valittu'}}}
+          />
+          <View>{dateView()}</View>
+          <TextInput onChangeText={setDesc} value={desc} style={styles.input} placeholder='type in appointment'></TextInput>
+          <Button title='save' color='#E35D86' onPress={() => selectedDate(desc)}/>
       
     </View>
   );
 }
 
-async function getDefaultCalendarSource() {
-  const calendars = await Calendar.getCalendarsAsync();
-  const defaultCalendars = calendars.filter(each => each.source.name === 'Default');
-  return defaultCalendars[0].source;
-}
+const styles = StyleSheet.create({
+  input: {
+      borderWidth : 0.3, 
+      borderBottomWidth: 0.15,
+      marginTop: 5, 
+      marginBottom: 5
+  }
+})
 
-async function createCalendar() {
-  const defaultCalendarSource =
-    Platform.OS === 'ios'
-      ? await getDefaultCalendarSource()
-      : { isLocalAccount: true, name: 'Expo Calendar' };
-  const newCalendarID = await Calendar.createCalendarAsync({
-    title: 'Expo Calendar',
-    color: 'blue',
-    entityType: Calendar.EntityTypes.EVENT,
-    sourceId: defaultCalendarSource.id,
-    source: defaultCalendarSource,
-    name: 'internalCalendarName',
-    ownerAccount: 'personal',
-    accessLevel: Calendar.CalendarAccessLevel.OWNER,
-  });
-  console.log(`Your new calendar ID is: ${newCalendarID}`);
-}
