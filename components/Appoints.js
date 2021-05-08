@@ -34,6 +34,7 @@ export default function Appoints({ navigation }) {
       };
       console.log(items2)
     return(
+      <View style={styles.listcontainer}>
         <FlatList
       data={Object.keys(items2)}
       renderItem={({ item }) => (
@@ -50,6 +51,8 @@ export default function Appoints({ navigation }) {
         </TouchableWithoutFeedback>
       )
     } ListEmptyComponent={EmptyListMessage}/>
+    
+    </View>
     )
 }
 const styles = StyleSheet.create({
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: '#fff',
       alignItems: 'center',
-      //paddingTop: 50
+      marginTop: -50
      },
      row: {
       elevation: 1,

@@ -37,15 +37,15 @@ export default function CalendarAct({ navigation }) {
         }
     const dateView = () => {
             if(dates[selected]){
-                return <View><Text>Appointments on {selected}:</Text>
-                <Text>{dates[selected].desc}</Text></View>
+                return <View><Text style={{fontSize: 16, fontWeight: 'bold'}}>Appointments on {selected}:</Text>
+                <Text style={{fontSize: 16}}>- {dates[selected].desc}</Text></View>
             }
-            return <View><Text>Please add an appointment {'\n'}for this day</Text>
+            return <View atyle={{marginTop: -15}}><Text style={{fontSize: 16}}>Please add an appointment for {'\n'}this day</Text>
             </View>
         
     }
   return (
-    <View>
+    <View style={styles.container}>
         <Calendar
         theme={{
             calendarBackground: '#EBECF0',
@@ -64,10 +64,10 @@ export default function CalendarAct({ navigation }) {
         }}
         markedDates={{...dates, [selected] : {selected: true, selectedColor: '#FFDAE0', desc: 'valittu'}}}
           />
-          <View>{dateView()}</View>
+          <View style={styles.listcontainer}>{dateView()}
           <TextInput onChangeText={setDesc} value={desc} style={styles.input} placeholder='type in appointment'></TextInput>
           <Button title='save' color='#E35D86' onPress={() => selectedDate(desc)}/>
-      
+          </View>
     </View>
   );
 }
@@ -77,9 +77,20 @@ const styles = StyleSheet.create({
       borderWidth : 0.3, 
       borderBottomWidth: 0.15,
       marginTop: 5, 
-      marginBottom: 5
+      marginBottom: 5,
+      width: 220
   },
   text: {
       fontSize: 16
-  }
+  },
+  container: {
+    marginTop: -164,
+    width: 380
+  },
+  listcontainer: {
+    marginTop: 20,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    
+   },
 })

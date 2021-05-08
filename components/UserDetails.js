@@ -26,7 +26,7 @@ export default function UserDetails () {
          
       ;}
     return(<View style={styles.container}>
-        <Image source={{ uri: image2 }} style={{ width: 200, height: 200, borderRadius: 200 / 2 }} />
+        <Image source={{ uri: image2 }} style={styles.img} />
         <Text style={{fontSize: 16}}>Username: {user.displayName}</Text>
         <Text style={{fontSize: 16}}>Email: {user.email}</Text>
     </View>)
@@ -34,6 +34,15 @@ export default function UserDetails () {
 
 const styles = StyleSheet.create({
 container: {
-    marginTop: -200
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+img: {
+    width: 200,
+    height: 200, 
+    borderRadius: 200 / 2,
+    marginBottom: 20
 }
 });

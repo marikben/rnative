@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: '#fff',
       alignItems: 'center',
-      //paddingTop: 50
+      marginTop: -50
      },
      row: {
       elevation: 1,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'column',
       flexWrap: 'wrap',
-      
+      marginTop: 15
       //paddingBottom: 400,
       
     },

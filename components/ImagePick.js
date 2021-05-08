@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Platform, StyleSheet, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import firebase from '../database/firebaseDB';
 
@@ -60,9 +60,25 @@ export default function ImagePick() {
   ;}
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={styles.container}>
+      <Text style={{fontSize: 16, marginBottom: 20}}>Change your profile picture</Text>
      <Image source={{ uri: image2 }} style={{ width: 200, height: 200, borderRadius: 200 / 2 , marginBottom: 20}} />
-     <Button title="Pick an image from camera roll" onPress={pickImage} />
+     <Button color='#EC88AC' title="Pick an image from camera roll" onPress={pickImage} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+   },
+   listcontainer: {
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    margin: 100
+   }})

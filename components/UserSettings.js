@@ -32,7 +32,7 @@ class UserSettings extends React.Component {
 
         
     return(<View style={styles.container}>
-        <View style={styles.listcontainer}><Text>Byy</Text>
+        <View style={styles.listcontainer}>
         <ImagePick />   
         <Button title='delete user' onPress={() => createTwoButtonAlert()} color='#ff0000'></Button>
     </View>
@@ -45,11 +45,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+   
    },
    listcontainer: {
     flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'center',
-    margin: 100
+    paddingTop: 1
    }})
+
 export default withNavigation(UserSettings);
