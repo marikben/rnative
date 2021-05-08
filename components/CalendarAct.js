@@ -9,6 +9,7 @@ export default function CalendarAct({ navigation }) {
     const [marked, setMarked] = useState ({});
     const [desc, setDesc] = useState('');
     const user = firebase.auth().currentUser;
+
     useEffect(() => {
       firebase.database().ref(user.uid+'/calendar2').on('value', snapshot => {
         const data = snapshot.val();
@@ -35,8 +36,12 @@ export default function CalendarAct({ navigation }) {
             
         }
     const dateView = () => {
-        
-            return <Text>Please add an appointment for this day</Text>
+            if(dates[selected]){
+                return <View><Text>Appointments on {selected}:</Text>
+                <Text>{dates[selected].desc}</Text></View>
+            }
+            return <View><Text>Please add an appointment {'\n'}for this day</Text>
+            </View>
         
     }
   return (

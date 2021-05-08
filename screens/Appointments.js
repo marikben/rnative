@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import { Alert, Dimensions, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import HeaderBar from '../components/HeaderBar.js'
@@ -7,13 +7,34 @@ import { DrawerItems } from 'react-navigation-drawer';
 import UserSettings from '../components/UserSettings';
 import UserDetails from '../components/UserDetails';
 import CalendarAct from '../components/CalendarAct';
+import Appoints from '../components/Appoints';
 
 export default function Appointments ({ navigation }) {
-  
+    const options = [{'name':'calendar', 'color': '#EC88AC'}, {'name':'all appointments', 'color': '#EC88AC'}]
+    const [opt, setOpt] = useState('');
+    const showScreen = (props) => {
+      if(props.name=='calendar'){
+        return(<CalendarAct />)
+      }else if (props.name=='all appointments') {
+        return(<Appoints/>)
+      }
+      else{
+        return(<CalendarAct />)
+      }
+    }
     return(<View style={styles.container}>
       <HeaderBar />
       <View style={styles.box}>
-      <CalendarAct /></View>
+      <FlatList
+            data={options}
+            renderItem={({item})=>(
+            <View style={{paddingRight: 10}}>
+            <Button title={item.name} color={item.color} onPress={() => setOpt(item)}></Button>
+            </View>
+            )} 
+         numColumns={2}
+            />
+      <View style={styles.row}>{showScreen(opt)}</View></View>
       </View>)
 }
 const styles = StyleSheet.create({
@@ -45,7 +66,7 @@ const styles = StyleSheet.create({
       marginRight: 14,
       marginTop: -600,
       marginBottom: 10,
-      width: '90%'
+      width: '100%'
     },
      row_cell_timeplace: {
       flex: 1,
@@ -63,6 +84,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'column',
       flexWrap: 'wrap',
+      
       //paddingBottom: 400,
       
     },
