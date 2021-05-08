@@ -5,7 +5,7 @@ import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import HeaderBar from '../components/HeaderBar';
 
-export default class Carousel extends Component {
+export default class About extends Component {
   constructor() {
     super();
 

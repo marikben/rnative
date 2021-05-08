@@ -34,7 +34,7 @@ class UserSettings extends React.Component {
     return(<View style={styles.container}>
         <View style={styles.listcontainer}>
         <ImagePick />   
-        <Button title='delete user' onPress={() => createTwoButtonAlert()} color='#ff0000'></Button>
+        <View style={{marginBottom: 50}}><Button title='delete user' onPress={() => createTwoButtonAlert()} color='#ff0000'></Button></View>
     </View>
     </View>     
     )

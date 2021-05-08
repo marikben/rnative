@@ -7,7 +7,7 @@ export default function Quiz ({ navigation }){
     const [skin, setSkin] = useState('');
     const [questions, setQuestions] = useState([{label: 'Base products', value: 'foundation'}, 
     {label: 'Bronzer', value: 'bronzer'}, {label: 'Blush', value: 'blush'},
-    {label: 'Brows', value: 'eyebrow'}, {label: 'Eyeliner', value: 'eyeliner'},
+    {label: 'Eyeliner', value: 'eyeliner'},
     {label: 'Eyeshadow', value: 'eyeshadow'}, {label: 'Lipliner', value: 'lip_liner'}, 
     {label: 'Lipstick', value: 'lipstick'}, {label: 'Mascara', value: 'mascara'},
     {label: 'Nail polish', value: 'nail_polish'}])

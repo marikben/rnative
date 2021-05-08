@@ -91,7 +91,7 @@ export default function Results ({ navigation }) {
           />}
         />
         <View style={styles.buttons}>
-        <View style={{marginRight: 20}}><Button color='#E35D86' onPress={() => navigation.navigate('Base')} title='New quiz'></Button></View>
+        <View style={{marginRight: 20}}><Button color='#E35D86' onPress={() => navigation.navigate('Quiz')} title='New quiz'></Button></View>
         <Button color='#E35D86' onPress={() => navigation.navigate('Profile', {'opt': 'faves'})} title='profile'></Button>
         </View>
       

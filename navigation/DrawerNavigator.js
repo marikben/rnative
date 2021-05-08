@@ -1,11 +1,10 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import Base from '../screens/Base';
+import Quiz from '../screens/Quiz';
 import Tags from '../screens/Tags';
 import Results from '../screens/Results';
-import Carousel from '../screens/Carousel'
+import About from '../screens/About'
 import Signup from '../screens/Signup';
 import Login from '../screens/Login';
-import Dashboard from '../screens/Dashboard';
 import UserMenu from '../components/UserMenu';
 import Profile from '../screens/Profile';
 import Appointments from '../screens/Appointments';
@@ -35,23 +34,16 @@ const RouteConfigs = {
     //}
   },
 
-  Dashboard: {
-    screen: Dashboard,
-    //navigationOptions: {
-     // drawerLabel: () => null
-    //}
-  },
-
   Appointments: {
     screen: Appointments
   },
 
-  Base: {
-    screen: Base,
+  Quiz: {
+    screen: Quiz,
   },
 
-  Carousel: {
-    screen: Carousel,
+  About: {
+    screen: About,
   },
   
 
