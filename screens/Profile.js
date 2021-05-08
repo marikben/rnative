@@ -16,11 +16,13 @@ export default function Profile ({ navigation }) {
     const [opt, setOpt] = useState('');
     
     useEffect(() => {
-        firebase.database().ref(user.uid+'/').on('value', snapshot => {
+        firebase.database().ref(user.uid+'/faves').on('value', snapshot => {
         
           const data = snapshot.val();
-          if(data){setItems2(data)
-            
+          
+          if(data){
+          setItems2(data)
+          console.log(data)
           }else{
             console.log('empty list')
             setItems2({})
@@ -44,9 +46,9 @@ export default function Profile ({ navigation }) {
       
       const deleteItem = (props) => {
         console.log(props)
-        firebase.database().ref(user.uid+'/').child(props).remove()
+        firebase.database().ref(user.uid+'/faves').child(props).remove()
        
-        firebase.database().ref(user.uid+'/').on('value', snapshot => {
+        firebase.database().ref(user.uid+'/faves').on('value', snapshot => {
           const data = snapshot.val();
           if(data){
             setItems2(data)

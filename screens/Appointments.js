@@ -6,7 +6,7 @@ import HeaderBar from '../components/HeaderBar.js'
 import { DrawerItems } from 'react-navigation-drawer';
 import UserSettings from '../components/UserSettings';
 import UserDetails from '../components/UserDetails';
-import CalendarAct from '../components/CalendarView';
+import CalendarAct from '../components/CalendarAct';
 
 export default function Appointments ({ navigation }) {
   

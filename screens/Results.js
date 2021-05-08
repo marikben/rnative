@@ -38,7 +38,7 @@ export default function Results ({ navigation }) {
 
   const saveItem = () => {
     
-    firebase.database().ref(user.uid+'/').push(
+    firebase.database().ref(user.uid+'/').child('faves').push(
       {'nro': mod.id, 'name': mod.name, 'brand': mod.brand, 'price': mod.price, 'picture': mod.image_link}
     );
     console.log('success')

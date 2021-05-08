@@ -10,8 +10,7 @@ export default function CalendarAct({ navigation }) {
     const [desc, setDesc] = useState('');
     const user = firebase.auth().currentUser;
     useEffect(() => {
-      firebase.database().ref(user.uid+'/dates').on('value', snapshot => {
-      
+      firebase.database().ref(user.uid+'/calendar').on('value', snapshot => {
         const data = snapshot.val();
         //console.log(Object.values(data))
         if(data){
@@ -29,20 +28,15 @@ export default function CalendarAct({ navigation }) {
     const selectedDate = (props) => {
             setDesc('')
             setMarked({...marked, [selected]: {selected: true, desc: props}})
-            firebase.database().ref(user.uid+'/dates').push(
+            firebase.database().ref(user.uid+'/').child('calendar').push(
               {[selected]: {selected: true, desc: props}}
             );
             console.log(marked)
         }
     const dateView = () => {
-        if(marked[selected]){
-            return <View>
-                <Text>Appointments on {selected}:</Text>
-                <Text>{marked[selected].desc !== undefined ? marked[selected].desc : 'moi'}</Text>
-                </View>
-        }else{
-            return <Text>Choose a date from the calendar</Text>
-        }
+        
+            return <Text>Please add an appointment for this day</Text>
+        
     }
   return (
     <View>
@@ -78,6 +72,9 @@ const styles = StyleSheet.create({
       borderBottomWidth: 0.15,
       marginTop: 5, 
       marginBottom: 5
+  },
+  text: {
+      fontSize: 16
   }
 })
 
