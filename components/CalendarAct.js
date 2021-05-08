@@ -10,13 +10,14 @@ export default function CalendarAct({ navigation }) {
     const [desc, setDesc] = useState('');
     const user = firebase.auth().currentUser;
     useEffect(() => {
-      firebase.database().ref(user.uid+'/calendar').on('value', snapshot => {
+      firebase.database().ref(user.uid+'/calendar2').on('value', snapshot => {
         const data = snapshot.val();
         //console.log(Object.values(data))
         if(data){
         const prods = Object.values(data)
-        setDates(prods[2])
-        console.log(dates)
+        console.log(Object.assign({}, ...prods))
+        setDates(Object.assign({}, ...Object.values(data)))
+        
         }else{
           console.log('empty list')
           setDates({})
@@ -28,10 +29,10 @@ export default function CalendarAct({ navigation }) {
     const selectedDate = (props) => {
             setDesc('')
             setMarked({...marked, [selected]: {selected: true, desc: props}})
-            firebase.database().ref(user.uid+'/').child('calendar').push(
+            firebase.database().ref(user.uid+'/').child('calendar2').push(
               {[selected]: {selected: true, desc: props}}
             );
-            console.log(marked)
+            
         }
     const dateView = () => {
         
@@ -77,4 +78,3 @@ const styles = StyleSheet.create({
       fontSize: 16
   }
 })
-
