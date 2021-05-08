@@ -90,8 +90,9 @@ export default function Results ({ navigation }) {
             onPress={() => navigation.navigate('Tags')}
           />}
         />
-        <View style={styles.container}>
-        <Button color='#E35D86' onPress={() => navigation.navigate('Base')} title='New quiz'></Button>
+        <View style={styles.buttons}>
+        <View style={{marginRight: 20}}><Button color='#E35D86' onPress={() => navigation.navigate('Base')} title='New quiz'></Button></View>
+        <Button color='#E35D86' onPress={() => navigation.navigate('Profile', {'opt': 'faves'})} title='profile'></Button>
         </View>
       
         <View style ={styles.row}>
@@ -147,11 +148,11 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   row: {
-    elevation: 1,
-    borderRadius: 2,
+    
+    
     flex: 1,
     flexDirection: "row", // main axis
-    justifyContent: "flex-start", // main axis
+    //justifyContent: "flex-start", // main axis
     alignItems: "center", // cross axis
     paddingTop: 10,
     paddingBottom: 10,
@@ -159,7 +160,22 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     marginLeft: 14,
     marginRight: 14,
-    marginTop: -200,
+    marginTop: -300,
+    marginBottom: -60,
+  },
+  buttons: {
+    
+    flex: 1,
+    flexDirection: "row", // main axis
+    justifyContent: "flex-start", // main axis
+    alignItems: "center", // cross axis
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 90,
+    paddingRight: 16,
+    marginLeft: 14,
+    marginRight: 14,
+    marginTop: -370,
     marginBottom: 6,
   },
   row_cell_timeplace: {
