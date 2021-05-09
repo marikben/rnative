@@ -55,7 +55,7 @@ class HeaderBar extends React.Component {
         centerComponent={<Text style={{fontFamily: 'Tomatoes', fontSize: 18, marginBottom: -25}}>Beauty App</Text>}
         rightComponent={
           <TouchableOpacity  onPress={() => this.props.navigation.navigate('Profile')}>
-              <Text style={{color:'#E35D86', marginTop: 5, fontSize: 22, fontFamily: 'Colombia'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
+              <Text style={{color:'#E35D86', marginTop: 5, fontSize: 23, fontFamily: 'Colombia'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
           </TouchableOpacity>}
       /></View>
       );

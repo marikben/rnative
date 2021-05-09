@@ -4,8 +4,6 @@ import {Dimensions, View, ImageBackground, FlatList, Text, TouchableWithoutFeedb
 import {Card} from '../components/Card'
 import {Title} from '../components/Title'
 import HeaderBar from '../components/HeaderBar';
-import * as Font from 'expo-font';
-import { AppLoading } from "expo";
 
 export default class About extends Component {
   constructor() {
@@ -13,19 +11,12 @@ export default class About extends Component {
 
     this.state = {
       data: '',
-      uid: '',
-      loading: true
+      uid: ''
+     
     };
   }
   
-  async componentWillMount() {
-    await Font.loadAsync({
-      Tomatoes: require("../assets/fonts/Tomatoes-O8L8.ttf"),
-      Colombia: require("../assets/fonts/Colombia-Rp0DV.ttf")
-    });
-    this.setState({ loading: false });
-  }
-
+ 
   keyExtractor = (item, index) => index.toString();
   renderCarousel = ({item}) => (
     <Card style={styles.cardContainerStyle}>
@@ -68,7 +59,7 @@ export default class About extends Component {
           'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
         title: 'Welcome',
         description: <Text >
-        Hello, <Text style={{color:'#E35D86', fontFamily: 'Colombia'}}>{this.state.displayName}</Text>! {'\n'}
+        Hello, <Text style={{color:'#E35D86'}}>{this.state.displayName}</Text>! {'\n'}
         Swipe left to learn more about how to use this app.
       </Text>
       },
@@ -84,7 +75,7 @@ export default class About extends Component {
           'https://media-we-cdn.oriflame.com/-/media/Images/Navigation/Main-menu/Discover-2020/Beauty-by-sweden/13370393_2732x778x580.ashx?u=0101010000',
         title: 'Favourites',
         description: <Text >Manage interesting products by adding them to your shopping list and
-        deleting them when you feel like it. You can always come back to your saved items by 
+        deleting them when you feel like it. {'\n'}You can always come back to your saved items by 
         signing back to your account.</Text>
       },
       {
@@ -142,11 +133,11 @@ const styles = {
   },
   titleStyle: {
     color: '#fff',
-    fontSize: 60,
+    fontSize: 40,
     marginVertical: 10,
     textShadowColor: '#E11584',
     textShadowRadius: 10,
-    //fontFamily: 'Colombia'
+    
   },
   text: {marginLeft: 15,
      marginTop: 20,
