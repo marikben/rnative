@@ -10,4 +10,4 @@ these technologies.
 -Custom fonts and how to sync them with your app (I used fonts from FontSpace).
 -I also learned how to use classes and other functions that have state, as we have only used stateless functions in the course.
 -Firebase: user registration and login; store, delete and add items to different tables; store, add and delete calendar data plus creating storage for all that.
--I used https://makeup-api.herokuapp.com/ for the makeup data
+-I used https://makeup-api.herokuapp.com/ for the makeup data that i fetched in json format
