@@ -194,7 +194,8 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       flexWrap: 'wrap',
       //paddingBottom: 400,
-      marginTop: 10
+      marginTop: 10,
+      marginBottom: 15
     },
     
   });

@@ -8,13 +8,23 @@ import firebase from '../database/firebaseDB';
 import UserMenu from './UserMenu';
 import { useNavigation } from '@react-navigation/native';
 import { withNavigation } from 'react-navigation';
+import * as Font from 'expo-font';
+import { AppLoading } from "expo";
 class HeaderBar extends React.Component {
     constructor() {
         super();
         this.state = { 
-          uid: ''
+          uid: '',
+          loading: true
         }
       }
+      async componentWillMount() {
+        await Font.loadAsync({
+          Tomatoes: require("../assets/fonts/Tomatoes-O8L8.ttf"),
+        });
+        this.setState({ loading: false });
+      }
+
   render() {
     if (firebase.auth().currentUser!=null)
     this.state = { 
@@ -26,19 +36,30 @@ class HeaderBar extends React.Component {
       displayName: 'moi',
       uid:'123'
     } 
-    return (
+   
+      if (this.state.loading) {
+        return (
+          <Root>
+            <AppLoading />
+          </Root>
+        );
+      }
+      return (
         <View>
         <Header 
         containerStyle={styles.header}
         leftComponent={<DrawerTrigger />}
-        centerComponent={{text:'BEAUTY APP'}}
+        centerComponent={<Text style={{fontFamily: 'Tomatoes', fontSize: 18, marginBottom: -25}}>Beauty App</Text>}
         rightComponent={
           <TouchableOpacity  onPress={() => this.props.navigation.navigate('Profile')}>
-              <Text style={{color:'#E35D86'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
+              <Text style={{color:'#E35D86', marginTop: 5}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
           </TouchableOpacity>}
       /></View>
-    )
-  }}
+      );
+    }
+        
+    
+  }
   const triggerStyles = {
     triggerText: {
       color: 'white',

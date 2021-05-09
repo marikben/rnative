@@ -3,15 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
-import { DrawerItems } from 'react-navigation-drawer';
 
 export default function UserDetails () {
     const user = firebase.auth().currentUser;
     const [image2, setImage2] = useState('https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg');
     
+
     useEffect (() => {
         getImage()
     })
+
 
     const getImage = () => {
       
@@ -27,7 +28,7 @@ export default function UserDetails () {
       ;}
     return(<View style={styles.container}>
         <Image source={{ uri: image2 }} style={styles.img} />
-        <Text style={{fontSize: 16}}>Username: {user.displayName}</Text>
+        <Text style={{fontSize: 16, fontFamily: 'Tomatoes'}}>Username: {user.displayName}</Text>
         <Text style={{fontSize: 16}}>Email: {user.email}</Text>
     </View>)
 }
