@@ -16,7 +16,6 @@ export default class About extends Component {
     };
   }
   
- 
   keyExtractor = (item, index) => index.toString();
   renderCarousel = ({item}) => (
     <Card style={styles.cardContainerStyle}>
@@ -45,13 +44,6 @@ export default class About extends Component {
       uid: firebase.auth().currentUser.uid
     }
 
-    if (this.state.loading) {
-      return (
-        <Root>
-          <AppLoading />
-        </Root>
-      );
-    }else{
     const eventslist = [
   
       { 
@@ -106,7 +98,7 @@ export default class About extends Component {
       </View>
     );
   }}
-}
+
 
 const styles = {
   mainContainer: {
@@ -115,15 +107,15 @@ const styles = {
   cardContainerStyle: {
   
     overflow: 'hidden',
-    elevation: 5,
+    elevation: 3,
     //margin: 5,
     width: Dimensions.get('window').width*0.965,
   },
   imageBackgroundStyle: {
-    width: Dimensions.get('window').width*0.925,
+    width: Dimensions.get('window').width*0.935,
     height: 160,
-    marginLeft: 7,
-    marginTop: 7,
+    marginLeft: 6,
+    marginTop: 5,
     justifyContent: 'center',
   },
   titleView: {
@@ -133,7 +125,7 @@ const styles = {
   },
   titleStyle: {
     color: '#fff',
-    fontSize: 40,
+    fontSize: 30,
     marginVertical: 10,
     textShadowColor: '#E11584',
     textShadowRadius: 10,

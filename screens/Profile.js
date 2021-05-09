@@ -22,7 +22,7 @@ export default function Profile ({ navigation }) {
           
           if(data){
           setItems2(data)
-          console.log(data)
+          console.log(items2)
           }else{
             console.log('empty list')
             setItems2({})
@@ -43,7 +43,7 @@ export default function Profile ({ navigation }) {
           />
         );
       };
-      
+      console.log(items2)
       const deleteItem = (props) => {
         console.log(props)
         firebase.database().ref(user.uid+'/faves').child(props).remove()

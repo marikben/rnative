@@ -6,6 +6,7 @@ import { Icon, ListItem } from 'react-native-elements';
 
 export default function Appoints({ navigation }) {
     const [items2, setItems2] = useState({});
+    const [del, setDel] = useState({});
     const user = firebase.auth().currentUser;
     useEffect(() => {
         firebase.database().ref(user.uid+'/calendar2').on('value', snapshot => {
@@ -14,6 +15,7 @@ export default function Appoints({ navigation }) {
           
           if(data){
             const prods = Object.values(data)
+            setDel(data)
             console.log(Object.assign({}, ...prods))
             setItems2(Object.assign({}, ...Object.values(data)))
             
@@ -32,7 +34,12 @@ export default function Appoints({ navigation }) {
           </Text>
         );
       };
-      console.log(items2)
+      
+
+      const deleteItem = (props) => {
+        console.log(props)
+        console.log(del)
+      }
     return(
       <View style={styles.listcontainer}>
         <FlatList
@@ -45,6 +52,9 @@ export default function Appoints({ navigation }) {
             <ListItem.Title>{items2[item].desc}
             </ListItem.Title>
             <ListItem.Subtitle>{item}</ListItem.Subtitle>
+            <View style={{marginLeft: 225, marginTop: -52}}>
+              <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button>
+              </ListItem></View>
             </View>
           </ListItem.Content>
         </ListItem>
