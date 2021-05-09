@@ -144,8 +144,4 @@ const styles = {
      fontSize: 18,
      padding: 5},
 
-    colombia: {
-      fontSize: 26, 
-      fontFamily: 'Colombia'
-    }
 };
