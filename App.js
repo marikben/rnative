@@ -9,6 +9,8 @@ export default function App() {
   LogBox.ignoreLogs(['Setting a timer']);
   LogBox.ignoreLogs(['Your project is accessing']);
   LogBox.ignoreLogs(['VirtualizedList']);
+  LogBox.ignoreLogs(['Can']);
+  LogBox.ignoreLogs(['[20']);
   return (
     <AppNavigator /> 
   );

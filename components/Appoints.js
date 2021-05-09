@@ -21,7 +21,8 @@ export default function Appoints({ navigation }) {
             
             }else{
               console.log('empty list')
-              setDates({})
+              setItems2({})
+              setDel({})
             }
         });
     }, []);
@@ -38,8 +39,23 @@ export default function Appoints({ navigation }) {
 
       const deleteItem = (props) => {
         console.log(props)
-        const test = Object.values(del['-M_BpHNXT9FJksNl-1W6'])[0].desc
-        console.log(test)
+        firebase.database().ref(user.uid+'/calendar2').child(props).remove()
+       
+        firebase.database().ref(user.uid+'/calendar2').on('value', snapshot => {
+          const data = snapshot.val();
+          
+          if(data){
+            const prods = Object.values(data)
+            setDel(data)
+            console.log(Object.assign({}, ...prods))
+            setItems2(Object.assign({}, ...Object.values(data)))
+            
+            }else{
+              console.log('empty list')
+              setItems2({})
+              setDel({})
+            }
+        });
       }
     return(
       <View style={styles.listcontainer}>
