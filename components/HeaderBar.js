@@ -19,23 +19,17 @@ class HeaderBar extends React.Component {
       async componentWillMount() {
         await Font.loadAsync({
           Tomatoes: require("../assets/fonts/Tomatoes-O8L8.ttf"),
-          GeliatExtraLight: require("../assets/fonts/GeliatExtralight-6YLRq.otf"),
           Colombia: require("../assets/fonts/Colombia-Rp0DV.ttf")
         });
         this.setState({ loading: false });
-      }
 
-  render() {
-    if (firebase.auth().currentUser!=null)
-    this.state = { 
-      displayName: firebase.auth().currentUser.displayName,
-      uid: firebase.auth().currentUser.uid
-    }
-    if (firebase.auth().currentUser==null)
-    this.state = { 
-      displayName: 'moi',
-      uid:'123'
-    } 
+      }
+      
+    render() {
+      this.state = { 
+        displayName: firebase.auth().currentUser.displayName,
+        uid: firebase.auth().currentUser.uid
+        }
    
       if (this.state.loading) {
         return (
@@ -43,7 +37,7 @@ class HeaderBar extends React.Component {
             <AppLoading />
           </Root>
         );
-      }
+      }else{
       return (
         <View>
         <Header 
@@ -55,7 +49,7 @@ class HeaderBar extends React.Component {
               <Text style={{color:'#E35D86', marginTop: 5, fontSize: 23, fontFamily: 'Colombia'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
           </TouchableOpacity>}
       /></View>
-      );
+      );}
     }
         
     
@@ -85,9 +79,5 @@ const styles = StyleSheet.create({
   },
 });
 
-const menuProviderStyles = {
-  menuProviderWrapper: styles.container,
-  backdrop: styles.backdrop,
-};
 
 export default withNavigation(HeaderBar);
