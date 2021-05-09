@@ -38,20 +38,21 @@ export default function Appoints({ navigation }) {
 
       const deleteItem = (props) => {
         console.log(props)
-        console.log(del)
+        const test = Object.values(del['-M_BpHNXT9FJksNl-1W6'])[0].desc
+        console.log(test)
       }
     return(
       <View style={styles.listcontainer}>
         <FlatList
-      data={Object.keys(items2)}
+      data={Object.keys(del)}
       renderItem={({ item }) => (
         <TouchableWithoutFeedback>
         <ListItem bottomDivider >
           <ListItem.Content>
             <View >
-            <ListItem.Title>{items2[item].desc}
+            <ListItem.Title>{Object.values(del[item])[0].desc}
             </ListItem.Title>
-            <ListItem.Subtitle>{item}</ListItem.Subtitle>
+            <ListItem.Subtitle>{Object.keys(del[item])}</ListItem.Subtitle>
             <View style={{marginLeft: 225, marginTop: -52}}>
               <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button>
               </ListItem></View>
