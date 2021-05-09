@@ -61,7 +61,7 @@ export default function ImagePick() {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 26, fontFamily: 'Colombia', marginBottom: 20}}>Change your profile picture</Text>
+      <Text style={{fontSize: 18, marginBottom: 20}}>Change your profile picture</Text>
      <Image source={{ uri: image2 }} style={{ width: 200, height: 200, borderRadius: 200 / 2 , marginBottom: 20}} />
      <Button color='#EC88AC' title="Pick an image from camera roll" onPress={pickImage} />
     </View>

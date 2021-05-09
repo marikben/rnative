@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { withNavigation } from 'react-navigation';
 import * as Font from 'expo-font';
 import { AppLoading } from "expo";
+
 class HeaderBar extends React.Component {
     constructor() {
         super();

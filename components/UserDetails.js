@@ -28,8 +28,8 @@ export default function UserDetails () {
       ;}
     return(<View style={styles.container}>
         <Image source={{ uri: image2 }} style={styles.img} />
-        <Text style={{fontSize: 26, fontFamily: 'Colombia'}}>Username: {user.displayName}</Text>
-        <Text style={{fontSize: 26, fontFamily: 'Colombia'}}>Email: {user.email}</Text>
+        <Text style={{fontSize: 18}}>Username: {user.displayName}</Text>
+        <Text style={{fontSize: 18}}>Email: {user.email}</Text>
     </View>)
 }
 
