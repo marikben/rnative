@@ -98,8 +98,9 @@ export default function Profile ({ navigation }) {
               : `${items2[item].name.substring(0, 29)}...`}
             </ListItem.Title>
             <ListItem.Subtitle>{items2[item].brand}</ListItem.Subtitle>
-            <ListItem.Subtitle>Price: {items2[item].price}</ListItem.Subtitle>
-            <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button></ListItem>
+            <ListItem.Subtitle>Price: {items2[item].price} $</ListItem.Subtitle>
+            <ListItem><View style={{marginLeft: -20}}><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button>
+            </View></ListItem>
             </View>
             <View style={styles.row_cell_temp}><Image source={{uri: items2[item].picture}} 
               style={{
