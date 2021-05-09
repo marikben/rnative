@@ -49,8 +49,8 @@ export default class About extends Component {
         src:
           'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
         title: 'Welcome',
-        description: <Text>
-        Hello, <Text style={{color:'#E35D86'}}>{this.state.displayName}</Text>! {'\n'}
+        description: <Text style={styles.colombia}>
+        Hello, <Text style={{color:'#E35D86', fontSize: 26, fontFamily: 'Colombia'}}>{this.state.displayName}</Text>! {'\n'}
         Swipe left to learn more about how to use this app.
       </Text>
       },
@@ -58,27 +58,27 @@ export default class About extends Component {
         src:
           'https://media.self.com/photos/57e00e471db118765d302bdd/2:1/pass/sub-channel-beauty_makeup.jpg',
         title: 'Personalized',
-        description: <Text>Take a quiz to find makeup products that fit your criteria:{'\n'}
+        description: <Text style={styles.colombia}>Take a quiz to find makeup products that fit your criteria:{'\n'}
         select product type and preferences for it!</Text>
       },
       {
         src:
           'https://media-we-cdn.oriflame.com/-/media/Images/Navigation/Main-menu/Discover-2020/Beauty-by-sweden/13370393_2732x778x580.ashx?u=0101010000',
         title: 'Favourites',
-        description: <Text>Manage interesting products by adding them to your shopping list and
+        description: <Text style={styles.colombia}>Manage interesting products by adding them to your shopping list and
         deleting them when you feel like it. You can always come back to your saved items by 
         signing back to your account.</Text>
       },
       {
         src:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfWQzqNelD6MSJgPKigH22LtCosXeK4d9W1QWvfknbN-hFPNXssY9U-Ly9VkGatsiXw5M&usqp=CAU',
-        title: 'Snacks',
+        title: 'Appointments',
         description: 'Zii'
       },
       {
         src:
           'https://media.allure.com/photos/5f6fa448eb43f61579aac592/16:9/w_3408,h_1917,c_limit/coconut-oil-uses-lede.jpg',
-        title: 'Dinner',
+        title: 'Profile',
         description: 'BZäp'
       },
     ];
@@ -124,13 +124,19 @@ const styles = {
   },
   titleStyle: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 60,
     marginVertical: 10,
     textShadowColor: '#E11584',
-    textShadowRadius: 10
+    textShadowRadius: 10,
+    fontFamily: 'Colombia'
   },
   text: {marginLeft: 15,
      marginTop: 20,
      fontSize: 18,
-    padding: 5}
+    padding: 5},
+
+    colombia: {
+      fontSize: 26, 
+      fontFamily: 'Colombia'
+    }
 };

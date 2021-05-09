@@ -21,6 +21,8 @@ class HeaderBar extends React.Component {
       async componentWillMount() {
         await Font.loadAsync({
           Tomatoes: require("../assets/fonts/Tomatoes-O8L8.ttf"),
+          GeliatExtraLight: require("../assets/fonts/GeliatExtralight-6YLRq.otf"),
+          Colombia: require("../assets/fonts/Colombia-Rp0DV.ttf")
         });
         this.setState({ loading: false });
       }
@@ -52,7 +54,7 @@ class HeaderBar extends React.Component {
         centerComponent={<Text style={{fontFamily: 'Tomatoes', fontSize: 18, marginBottom: -25}}>Beauty App</Text>}
         rightComponent={
           <TouchableOpacity  onPress={() => this.props.navigation.navigate('Profile')}>
-              <Text style={{color:'#E35D86', marginTop: 5}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
+              <Text style={{color:'#E35D86', marginTop: 5, fontSize: 22, fontFamily: 'Colombia'}}><Icon name='user' color='grey' size={15}/>{this.state.displayName}</Text>
           </TouchableOpacity>}
       /></View>
       );
