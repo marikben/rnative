@@ -74,8 +74,7 @@ export default function CalendarAct({ navigation }) {
 
 const styles = StyleSheet.create({
   input: {
-      borderWidth : 0.3, 
-      borderBottomWidth: 0.15,
+      borderWidth : 0.5, 
       marginTop: 5, 
       marginBottom: 5,
       width: 220
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
       fontSize: 16
   },
   container: {
-    marginTop: -164,
+    marginTop: -140,
     width: 380
   },
   listcontainer: {

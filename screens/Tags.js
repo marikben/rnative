@@ -110,12 +110,12 @@ export default function Tags ({ navigation }) {
         <Header 
         containerStyle={styles.header}
         leftComponent={<Icon name='keyboard-arrow-left' size={30}
-            onPress={() => navigation.navigate('Base')}
+            onPress={() => navigation.navigate('Quiz')}
           />}
         />
     <View style={styles.container}>
        
-        <Text style={{padding: 10, fontSize: 16}}>Select preferences for your {name}</Text>
+        <Text style={{padding: 10, fontSize: 18}}>Select preferences for your {name}</Text>
         <View style={styles.buttonContainer}>
 				{tagSelect()}
 			</View>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: -500
+      marginTop: -200
     },
         header: {
           //paddingTop: 40,

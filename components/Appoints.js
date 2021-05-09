@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: '#fff',
       alignItems: 'center',
-      marginTop: -50
+      
      },
      row: {
       elevation: 1,
