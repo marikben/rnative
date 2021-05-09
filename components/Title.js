@@ -6,7 +6,6 @@ const Title = props => (
 );
 const styles = {
 titleStyle: {
-
 fontFamily: 'sans-serif',
 fontSize: 25,
 color: '#000',

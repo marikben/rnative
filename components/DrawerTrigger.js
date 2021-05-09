@@ -1,11 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-
-// withNavigation allows components to dispatch navigation actions
 import { withNavigation } from 'react-navigation';
-
-// DrawerActions is a specific type of navigation dispatcher
 import { DrawerActions } from 'react-navigation-drawer';
 
 class DrawerTrigger extends React.Component {

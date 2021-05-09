@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Button, FlatList, Image, Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { Alert, Button,  StyleSheet, View} from 'react-native';
 import firebase from '../database/firebaseDB';
 import { withNavigation } from 'react-navigation';
 import ImagePick from './ImagePick';

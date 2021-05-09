@@ -12,7 +12,6 @@ export default class About extends Component {
     this.state = {
       data: '',
       uid: ''
-     
     };
   }
   
@@ -46,8 +45,7 @@ export default class About extends Component {
 
     const eventslist = [
   
-      { 
-        src:
+      {src:
           'https://www.teads.com/wp-content/uploads/2019/10/cover-research-beauty.jpg',
         title: 'Welcome',
         description: <Text >
@@ -74,13 +72,13 @@ export default class About extends Component {
         src:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfWQzqNelD6MSJgPKigH22LtCosXeK4d9W1QWvfknbN-hFPNXssY9U-Ly9VkGatsiXw5M&usqp=CAU',
         title: 'Appointments',
-        description: 'Zii'
+        description: <Text>Mark your appointments in your personal calendar!</Text>
       },
       {
         src:
           'https://media.allure.com/photos/5f6fa448eb43f61579aac592/16:9/w_3408,h_1917,c_limit/coconut-oil-uses-lede.jpg',
         title: 'Profile',
-        description: 'BZäp'
+        description: <Text>Change your profile picture and maintain your account.</Text>
       },
     ];
 
@@ -105,10 +103,8 @@ const styles = {
     flex: 1
   },
   cardContainerStyle: {
-  
     overflow: 'hidden',
     elevation: 3,
-    //margin: 5,
     width: Dimensions.get('window').width*0.965,
   },
   imageBackgroundStyle: {

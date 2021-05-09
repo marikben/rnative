@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Dimensions, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View} from 'react-native';
-import { Icon, ListItem } from 'react-native-elements';
-import firebase from '../database/firebaseDB';
+import React, { useState } from 'react';
+import { Button, FlatList, StyleSheet, View} from 'react-native';
 import HeaderBar from '../components/HeaderBar.js'
-import { DrawerItems } from 'react-navigation-drawer';
-import UserSettings from '../components/UserSettings';
-import UserDetails from '../components/UserDetails';
 import CalendarAct from '../components/CalendarAct';
 import Appoints from '../components/Appoints';
 
@@ -16,9 +11,8 @@ export default function Appointments ({ navigation }) {
       if(props.name=='calendar'){
         return(<CalendarAct />)
       }else if (props.name=='all appointments') {
-        return(<Appoints/>)
-      }
-      else{
+        return(<Appoints />)
+      }else{
         return(<CalendarAct />)
       }
     }
@@ -37,6 +31,7 @@ export default function Appointments ({ navigation }) {
       <View style={styles.row}>{showScreen(opt)}</View></View>
       </View>)
 }
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -85,7 +80,6 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       flexWrap: 'wrap',
       marginTop: 15
-      //paddingBottom: 400,
       
     },
     

@@ -4,10 +4,10 @@ import * as ImagePicker from 'expo-image-picker';
 import firebase from '../database/firebaseDB';
 
 export default function ImagePick() {
-  const [image, setImage] = useState(null);
+
   const [image2, setImage2] = useState('https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg');
-  const [key, setKey] = useState(1)
   const user = firebase.auth().currentUser;
+  
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
@@ -45,15 +45,12 @@ export default function ImagePick() {
     }
   };
 
-  const getImage = () => {
-      
+  const getImage = () => {   
     let ref = firebase.storage().ref(user.uid+'/my-image')
     ref
     .getDownloadURL()
     .then((url) => {
-      //from url you can fetched the uploaded image easily
      setImage2(url)
-     
     })
     .catch((e) => console.log('getting downloadURL of image error => ', e));
      

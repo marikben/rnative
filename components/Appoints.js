@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, Platform, StyleSheet, TextInput, FlatList, TouchableWithoutFeedback } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import { View, Text, Button, StyleSheet, FlatList, TouchableWithoutFeedback } from 'react-native';
 import firebase from '../database/firebaseDB';
-import { Icon, ListItem } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 
 export default function Appoints({ navigation }) {
     const [items2, setItems2] = useState({});
@@ -57,31 +56,31 @@ export default function Appoints({ navigation }) {
             }
         });
       }
-    return(
-      <View style={styles.listcontainer}>
-        <FlatList
-      data={Object.keys(del)}
-      renderItem={({ item }) => (
-        <TouchableWithoutFeedback>
-        <ListItem bottomDivider >
-          <ListItem.Content>
-            <View >
-            <ListItem.Title>{Object.values(del[item])[0].desc}
-            </ListItem.Title>
-            <ListItem.Subtitle>{Object.keys(del[item])}</ListItem.Subtitle>
-            <View style={{marginLeft: 225, marginTop: -52}}>
-              <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button>
-              </ListItem></View>
-            </View>
-          </ListItem.Content>
-        </ListItem>
-        </TouchableWithoutFeedback>
+      return(
+        <View style={styles.listcontainer}>
+          <FlatList
+        data={Object.keys(del)}
+        renderItem={({ item }) => (
+          <TouchableWithoutFeedback>
+          <ListItem bottomDivider >
+            <ListItem.Content>
+              <View >
+              <ListItem.Title>{Object.values(del[item])[0].desc}
+              </ListItem.Title>
+              <ListItem.Subtitle>{Object.keys(del[item])}</ListItem.Subtitle>
+              <View style={{marginLeft: 225, marginTop: -52}}>
+                <ListItem><Button title='Delete' color='#E35D86' onPress={() => deleteItem(item)}></Button>
+                </ListItem></View>
+              </View>
+            </ListItem.Content>
+          </ListItem>
+          </TouchableWithoutFeedback>
+        )
+      } ListEmptyComponent={EmptyListMessage}/>
+      
+      </View>
       )
-    } ListEmptyComponent={EmptyListMessage}/>
-    
-    </View>
-    )
-}
+  }
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -99,9 +98,9 @@ const styles = StyleSheet.create({
       elevation: 1,
       borderRadius: 2,
       flex: 1,
-      flexDirection: "row", // main axis
-      justifyContent: "flex-start", // main axis
-      alignItems: "center", // cross axis
+      flexDirection: "row", 
+      justifyContent: "flex-start", 
+      alignItems: "center", 
       paddingTop: 10,
       paddingBottom: 10,
       paddingLeft: 18,
@@ -128,7 +127,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'column',
       flexWrap: 'wrap',
-      //paddingBottom: 400,
       marginTop: 10
     },
     

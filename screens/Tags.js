@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { Header, Icon, ListItem } from 'react-native-elements';
+import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Header, Icon } from 'react-native-elements';
 import TagSelector from 'react-native-tag-selector';
-import { TagSelect } from 'react-native-tag-select';
 
 export default function Tags ({ navigation }) {
+
     const [selections, setSelections] = useState([]);
     const type = navigation.getParam('list');
     const name = navigation.getParam('name');
@@ -69,40 +69,14 @@ export default function Tags ({ navigation }) {
         }
     }
     
-    const tagStyle = () => {
-      
-      if(selections.length===0){
-        return {
-          borderWidth: 0.25,
-          borderColor: '#999999',  
-          borderRadius: 5,  
-          backgroundColor: '#FFF',
-          padding: 7,
-          margin: 2
-        }
-      }else{
-        return {
-          borderWidth: 0.25,
-          borderColor: '#999999',  
-          borderRadius: 5, 
-          backgroundColor: '#dddddd',
-          padding: 7,
-          margin: 2
-        }
-      }
-    }
     
     const tagSelect = () => {
       return <TagSelector 
       key={key}
       tags={tags}
-                //containerStyle = {styles.container}
                 selectedTagStyle = {styles.itemSelected}
                 tagStyle = {styles.item}
                 expandTextStyle={styles.label}
-                //separatorStyle = {styles.separator}
-                //expandBtnStyle = {styles.btnStyle}
-                //expandTextStyle = {styles.btnText}
       onChange={(selected) => setSelections({ selected })} />
     }
     return(
@@ -113,26 +87,24 @@ export default function Tags ({ navigation }) {
             onPress={() => navigation.navigate('Quiz')}
           />}
         />
-    <View style={styles.container}>
-       
+      <View style={styles.container}>
         <Text style={{padding: 10, fontSize: 18}}>Select preferences for your {name}</Text>
         <View style={styles.buttonContainer}>
 				{tagSelect()}
-			</View>
+			  </View>
             <Button color='#E35D86' onPress={() => navigation.navigate('Results', {'list':selections, 'type':type}, setSelections([]), setKey(key+1))} title="Show products"></Button>
-    </View>
+        </View>
     </React.Fragment>)
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: -200
-    },
+        container: {
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: -200
+        },
         header: {
-          //paddingTop: 40,
           backgroundColor: 'whitesmoke',
         },
         buttonContainer: {

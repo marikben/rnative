@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import{ Button, FlatList, View, Text, StatusBar, StyleSheet, Alert} from 'react-native';
+import React, { useState } from 'react';
+import{ Button, View, Text, StatusBar, StyleSheet} from 'react-native';
 import HeaderBar from '../components/HeaderBar.js'
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -23,8 +23,8 @@ export default function Quiz ({ navigation }){
           items={questions}
           defaultIndex={0}
           containerStyle={{width: 300, height: 40}}
-          onChangeItem={item => setSkin(item)}
-        /></View>
+          onChangeItem={item => setSkin(item)}/>
+          </View>
       <View style={styles.next}>
       <Button color='#E35D86' onPress={() => navigation.navigate('Tags', {'list': skin.value, 'name': skin.label})} title="Next">
       </Button>
@@ -58,12 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-   // marginTop: -500,
     marginLeft: 250
     
   }
-  
-  
-  
- 
 });

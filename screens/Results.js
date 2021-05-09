@@ -53,8 +53,7 @@ export default function Results ({ navigation }) {
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
-        }}
-      >
+        }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{mod.name}</Text>
@@ -63,22 +62,18 @@ export default function Results ({ navigation }) {
            style={{ width: 200, height: 200, resizeMode: 'stretch' }}
         source={{
           uri: mod.image_link
-        }}
-      /></View>
+        }}/>
+        </View>
             <Text>Brand: {mod.brand}</Text>
             <Text>Price: {mod.price} $USD</Text>
             <Pressable
               style={[styles.buttonClose, styles.button]}
-              onPress={() => setModalVisible(!modalVisible)}
-              
-            >
+              onPress={() => setModalVisible(!modalVisible)}>
               <Text style={{color: 'white'}}>Hide Modal</Text>
             </Pressable>
             <Pressable
               style={[styles.buttonClose, styles.button]}
-              onPress={() => saveItem()}
-              
-            >
+              onPress={() => saveItem()}>
               <Text style={{color: 'white'}}>Add Item</Text>
             </Pressable>
           </View>
@@ -87,9 +82,7 @@ export default function Results ({ navigation }) {
         <Header 
         containerStyle={styles.header}
         leftComponent={<Icon name='keyboard-arrow-left' size={30}
-            onPress={() => navigation.navigate('Tags')}
-          />}
-        />
+            onPress={() => navigation.navigate('Tags')}/>}/>
         <View style={styles.buttons}>
         <View style={{marginRight: 20}}><Button color='#E35D86' onPress={() => navigation.navigate('Quiz')} title='New quiz'></Button></View>
         <Button color='#E35D86' onPress={() => navigation.navigate('Profile', {'opt': 'faves'})} title='profile'></Button>
@@ -148,12 +141,9 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   row: {
-    
-    
     flex: 1,
-    flexDirection: "row", // main axis
-    //justifyContent: "flex-start", // main axis
-    alignItems: "center", // cross axis
+    flexDirection: "row", 
+    alignItems: "center", 
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 18,
@@ -164,7 +154,6 @@ const styles = StyleSheet.create({
     marginBottom: -60,
   },
   buttons: {
-    
     flex: 1,
     flexDirection: "row", // main axis
     justifyContent: "flex-start", // main axis

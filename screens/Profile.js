@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, FlatList, Image, Modal, Pressable, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
-import { Icon, ListItem } from 'react-native-elements';
+import {  Button, FlatList, Image, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import { ListItem } from 'react-native-elements';
 import firebase from '../database/firebaseDB';
 import HeaderBar from '../components/HeaderBar.js'
-import { DrawerItems } from 'react-navigation-drawer';
 import UserSettings from '../components/UserSettings';
 import UserDetails from '../components/UserDetails';
 
 export default function Profile ({ navigation }) {
-    const [items, setItems] = useState([]);
+
     const [items2, setItems2] = useState({});
     const user = firebase.auth().currentUser;
     const options = [{'name':'user', 'color': '#EC88AC'}, {'name':'faves', 'color': '#EC88AC'}, 
@@ -31,19 +30,6 @@ export default function Profile ({ navigation }) {
         });
       }, []);
       
-      const listSeparator = () => {
-        return (
-          <View
-            style={{
-              height: 5,
-              width: "80%",
-              backgroundColor: "#fff",
-              marginLeft: "10%"
-            }}
-          />
-        );
-      };
-      console.log(items2)
       const deleteItem = (props) => {
         console.log(props)
         firebase.database().ref(user.uid+'/faves').child(props).remove()
@@ -70,21 +56,20 @@ export default function Profile ({ navigation }) {
           </Text>
         );
       };
+
      const signOut = () => {
         firebase.auth().signOut().then(() => {
          navigation.navigate('Login')
         })
         .catch(error => console.log(error))
       }  
+
     //much more efficient/faster to have this in the same component
     const prof2 = () => {
       if(Object.keys(items2)===null | Object.keys(items2)===undefined){
       return(
-        <Text>
-        No Data Found
-      </Text>
-      )
-    }else{
+        <Text>No Data Found</Text>)
+      }else{
       return (
       <FlatList
       data={Object.keys(items2)}
@@ -148,6 +133,7 @@ export default function Profile ({ navigation }) {
         {showScreen(opt)}</View>
       </View>)
 }
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -158,8 +144,7 @@ const styles = StyleSheet.create({
      listcontainer: {
       flexDirection: 'row',
       backgroundColor: '#fff',
-      alignItems: 'center',
-      //paddingTop: 50
+      alignItems: 'center'
      },
      row: {
       elevation: 1,
@@ -194,7 +179,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'column',
       flexWrap: 'wrap',
-      //paddingBottom: 400,
       marginTop: 10,
       marginBottom: 15
     },
